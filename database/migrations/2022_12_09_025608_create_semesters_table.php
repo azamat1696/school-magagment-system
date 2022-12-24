@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('semesters', function (Blueprint $table) {
             $table->id();
             $table->string('DonemAdi');
-            $table->unsignedBigInteger('academic_years_id');
+            $table->unsignedBigInteger('academic_years_id')->nullable();
             $table->boolean('Statu')->default(true);
             $table->timestamps();
             $table->foreign('academic_years_id')->references('id')->on('academic_years')->onDelete('set null')->onUpdate('cascade');
