@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('OgrenciNo',20)->unique();
             $table->string('DiplomaAdi',100);
             $table->string('DiplomaSoyadi',100);
+            $table->string('DigerIsimleri',100);
             $table->string('AnneAdi')->nullable();
             $table->string('BabaAdi')->nullable();
             $table->enum('Cinsiyet',['Erkek','Kadin']);
