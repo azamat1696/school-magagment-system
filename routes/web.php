@@ -27,6 +27,9 @@ Route::group(['middleware' => ['auth']],function (){
     Route::resource('academic-year',\App\Http\Controllers\AcademicYearController::class);
     Route::resource('semesters',\App\Http\Controllers\SemesterController::class);
     Route::resource('students',\App\Http\Controllers\StudentsController::class);
+    Route::resource('countries',\App\Http\Controllers\CountriesController::class);
+    Route::resource('class-groups',\App\Http\Controllers\ClassGroupsController::class);
+    Route::resource('classes',\App\Http\Controllers\MyClassController::class);
 });
 
 

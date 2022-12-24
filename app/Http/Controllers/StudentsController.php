@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Countries;
 use App\Models\Students;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        $countries = Countries::all();
+        return view('students.create',compact('countries'));
     }
 
     /**

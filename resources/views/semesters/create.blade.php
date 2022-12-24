@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="col-md-3">
-                            <!-- Date dd/mm/yyyy -->
+
                             <div class="form-group">
                                 <label>Status</label>
 

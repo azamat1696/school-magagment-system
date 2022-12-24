@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
             $table->string('ProfilResim')->nullable();
             $table->enum('Cinsiyet',['Erkek','Kadin'])->default('Erkek');
             $table->string('KullaniciKodu')->nullable();
@@ -28,6 +27,9 @@ return new class extends Migration
             $table->date('DogumTarihi')->nullable();
             $table->longText('Adres')->nullable();
             $table->string('KullaniciTipi')->nullable();
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null')->onUpdate('cascade');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

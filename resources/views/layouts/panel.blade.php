@@ -127,11 +127,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     </li>
                     <li class="nav-item">
-                        <a  href="{{route('students.index')}}"  class="nav-link {{request()->routeIs('semesters.index*') ? 'active' : ''}}">
-                            <i class="nav-icon fas fa-sign"></i>
+                        <a  href="{{route('students.index')}}"  class="nav-link {{request()->routeIs('students.index*') ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-user-graduate"></i>
                             <p>
                                 Öğrenciler
 
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a  href="{{route('countries.index')}}"  class="nav-link {{request()->routeIs('countries.index*') ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-globe"></i>
+                            <p>
+                                Ülkeler
+
+                            </p>
+                        </a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a  href="{{route('class-groups.index')}}"  class="nav-link {{request()->routeIs('class-groups*') ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-layer-group"></i>
+                            <p>
+                                Sınıf Gurupları
+
+                            </p>
+                        </a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a  href="{{route('classes.index')}}"  class="nav-link {{request()->routeIs('classes*') ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-chalkboard"></i>
+                            <p>
+                                Sınıflar
                             </p>
                         </a>
 

@@ -17,16 +17,17 @@ class Students extends Model
       'OgrenciNo',
       'DiplomaAdi',//
       'DiplomaSoyadi',//
+      'DigerIsimleri',//
       'AnneAdi',//
       'BabaAdi', //
       'Cinsiyet',//
-      'Uyruk',
-      'KanGurubu',
-      'DogunYeri',
-      'DogunTarihi',
+      'Uyruk', //
+      'KanGurubu',//
+      'DogunYeri',//
+      'DogunTarihi',//
       'TelefonNo',
       'KKTCAdres',
-      'Email',
+      'Email', //
       'Sinif',
       'OgrenciStatu',
       'OgrenciHakki',
@@ -45,8 +46,9 @@ class Students extends Model
       'DiplomaNot',
       'TelNoYakini_1',
       'TelNoYakini_2',
-      'Status',
+      'Status',//
       'Notlar',
       'user_id',
+      'StudentPhoto'
     ];
 }

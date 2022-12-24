@@ -14,8 +14,18 @@
                 <form action="{{route('students.store')}}" method="post">
                     @csrf
                     <div class="row">
-                        <h4 class="text-bold col-12 text-center">Kişisel Bilgiler</h4>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
+                            <div class="row">
+
+                                <label for="imgInput">
+                                    <img src="" id="previewImage" alt="" height="150px" width="150px" style="border-radius: 3px">
+                                    <input id="imgInput" type="file" style="display: none" onchange="readUrl(this)" name="StudentPhoto">
+                                </label>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
 
                             <div class="form-group">
                                 <label for="DiplomaAdi">İsim</label>
@@ -46,94 +56,6 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="col-md-3">
-
-                            <div class="form-group">
-                                <label for="DigerIsimleri">Diğer İsimler</label>
-
-                                <div class="input-group">
-                                    <input id="DigerIsimleri " type="text" class="form-control @error('DigerIsimleri') is-invalid @enderror" name="DigerIsimleri" value="{{ old('DigerIsimleri') }}" required autocomplete="DigerIsimleri" autofocus>
-
-                                    @error('DigerIsimleri')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="col-md-3">
-
-                            <div class="form-group">
-                                <label for="Email">E-posta</label>
-
-                                <div class="input-group">
-                                    <input id="Email " type="email" class="form-control @error('AnneAdi') is-invalid @enderror" name="Email" value="{{ old('Email') }}" required autocomplete="Email" autofocus>
-
-                                    @error('Email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="col-md-3">
-                            <!-- Date dd/mm/yyyy -->
-                            <div class="form-group">
-                                <label> Doğum Tarihi </label>
-
-                                <div class="input-group">
-
-                                    <input
-                                        type="date"
-                                        id="DogumTarihi"
-                                        class="form-control @error('DogumTarihi') is-invalid @enderror"
-                                        name="DogumTarihi"
-                                        data-inputmask-alias="datetime"
-                                        data-inputmask-inputformat="dd/mm/yyyy"
-                                        required  data-mask autocomplete="DogumTarihi">
-
-                                    @error('DogumTarihi')
-                                    <span class="invalid-feedback" role="alert">
-                                          <strong>{{ $message }}</strong>
-                                          </span>
-                                    @enderror
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label> Doğum Yeri </label>
-
-                                <div class="input-group">
-
-                                    <input
-                                        id="DogunYeri"
-                                        type="text"
-                                        class="form-control @error('DogunYeri') is-invalid @enderror"
-                                        name="DogunYeri" value="{{ old('DogunYeri') }}"
-                                        required autocomplete="DogunYeri" autofocus>
-
-
-                                    @error('DogunYeri')
-                                    <span class="invalid-feedback" role="alert">
-                                          <strong>{{ $message }}</strong>
-                                          </span>
-                                    @enderror
-
                                 </div>
 
                             </div>
@@ -222,39 +144,12 @@
                                 <label for="Cinsiyet">Cinsiyet</label>
 
                                 <div class="input-group">
-                                    <select name="Cinsiyet" id="Cinsiyet" class="form-control @error('Cinsiyet') is-invalid @enderror" required>
+                                    <select name="Cinsiyet" id="Cinsiyet" class="form-control @error('password') is-invalid @enderror" required>
                                         <option value="Erkek">Erkek</option>
                                         <option value="Kadin">Kadın</option>
                                     </select>
 
-                                    @error('Cinsiyet')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="col-md-3">
-
-                            <div class="form-group">
-                                <label for="KanGurubu">Kan Gurubu</label>
-
-                                <div class="input-group">
-                                    <select name="KanGurubu" id="KanGurubu" class="form-control @error('KanGurubu') is-invalid @enderror" required>
-                                        <option value="A+">A+</option>
-                                        <option value="A-">A-</option>
-                                        <option value="B+">B+</option>
-                                        <option value="B-">B-</option>
-                                        <option value="AB+">AB+</option>
-                                        <option value="Ab-">Ab-</option>
-                                        <option value="O+">O+</option>
-                                        <option value="O-">O-</option>
-                                    </select>
-
-                                    @error('KanGurubu')
+                                    @error('PassportNo')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -271,9 +166,9 @@
 
                                 <div class="input-group">
                                     <select name="Uyruk" id="Uyruk" class="form-control @error('Uyruk') is-invalid @enderror" required>
-                                       @foreach($countries as $country)
-                                        <option value="{{$country->id}}"> {{$country->name}}</option>
-                                        @endforeach
+                                        <option value="Tkm">Türkmenistan</option>
+                                        <option value="Gr">Almanya</option>
+                                        <option value="USA">Amerika</option>
                                     </select>
 
                                     @error('Uyruk')
@@ -286,6 +181,7 @@
                             </div>
 
                         </div>
+
                         <div class="col-md-3">
 
                             <div class="form-group">
@@ -306,9 +202,6 @@
                             </div>
 
                         </div>
-                        <h4 class="text-bold col-12 text-center">Okul Bilgiler</h4>
-
-
                     </div>
                     <div class="row float-right">
                         <div class="col-md-4">
