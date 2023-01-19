@@ -1,0 +1,168 @@
+models:
+    Department:
+        id: id
+        name: string
+        description: string nullable
+        department_no: string
+        status: boolean default:true
+        budget: bigInteger nullable
+        first_letter: string
+        created_at: dateTime
+        updated_at: dateTime
+    Course:
+        id: id
+        name: string
+        course_no: string
+        description: string
+        department_id: bigInteger foreign:department.id
+        Status: boolean default:true
+        created_at: dateTime
+        updated_at: dateTime
+    Section:
+        id: id
+        name: string
+        section_no: string
+        course_id: bigInteger foreign:course.id
+        instructor_user_id: bigInteger nullable foreign:user.id
+        theory_start_date: date nullable
+        theory_end_date: date nullable
+        practice_start_date: date nullable
+        practice_end_date: date nullable
+        ic_denetim_tarih: dateTime nullable
+        ic_denetim_user_id: bigInteger nullable foreign:user.id
+        ders_imza_end_date: date nullable
+        user_id: bigInteger comment:"en son işlem yapan kişi" foreign:user.id
+        status: boolean default:"1"
+        created_at: dateTime
+        updated_at: dateTime
+    User:
+        id: id
+        name: bigInteger
+    Attendance:
+        id: id
+        section_id: bigInteger foreign:section.id
+        student_id: bigInteger
+        Status: boolean
+        assigned_date: date
+        user_id: bigInteger foreign:user.id
+        course_id: bigInteger foreign:course.id
+        created_at: bigInteger
+        updated_at: bigInteger
+    Student:
+        id: id foreign:attendance.student_id
+        name: string
+        surname: bigInteger
+        other_names: bigInteger nullable
+        student_no: string
+        identity_no: string
+        passport_no: string
+        gender: enum default:"male,female"
+        country_id: bigInteger
+        blood_group: string
+        birth_date: date
+        place_of_birth: string
+        mother_name: string
+        father_name: string
+        email: string
+        phone_no: string
+        phone_no_1: string
+        phone_no_2: string
+        address: string
+        student_status: "string comment:\"01 AKTİF ÖĞRENCİ\n02 İZİNLİ KAYIT DONDURMA\n06 PASİF ÖĞRENCİ(KAYDI YENİLEMEMİŞ)\n99 KAYDI SİLİNMİŞTİR(AYRILAN ÖĞRENCİLER)\n999 – ön kayıtlı\""
+        ogr_hakk: "string comment:\"Hakvar,\nHakyok\""
+        not_sistemi: string comment:"listeden seçilecek"
+        ayrilma_tarihi: date
+        ayrilma_nedeni: "string nullable comment:\"1. Mezun\n2. çıkartıldı\n3. kendisi ayrıldı\n4. devamsızlıktan\""
+        register_date: date
+        hazirlik_okudum: boolean
+        hazirlik_donem_sayi: tinyInteger default:1
+        giris_turu: string comment:"(Def. Value “2-Sınavsız Geçiş”)"
+        giris_puan_turu: string nullable
+        giris_puan: bigInteger nullable
+        genel_not_ortalama: bigInteger
+        notes: string
+        user_id: bigInteger
+        diploma_tur: string nullable
+        diploma_not: bigInteger
+        status: boolean default:"1"
+        created_at: dateTime
+        updated_at: dateTime
+    Grade:
+        id: id
+        student_id: bigInteger foreign:student.id
+        course_id: bigInteger foreign:course.id
+        semester_id: bigInteger
+        grade: bigInteger
+        user_id: bigInteger foreign:user.id
+        column_7: bigInteger
+    Semester:
+        id: id foreign:grade.semester_id
+        name: string
+        academic_year_id: bigInteger foreign:academic_year.id
+        status: boolean
+        created_at: dateTime
+        udated_at: dateTime
+    Transaction:
+        id: id
+        transaction_no: string
+        description: string nullable
+        student_id: bigInteger foreign:student.id
+        user_id: bigInteger comment:"en son işlem yapan"
+        department_id: bigInteger foreign:department.id
+        semester_id: bigInteger
+        currency_type: string
+        islem_tarih: date
+        vade_tarih: date
+        amount_payed: bigInteger comment:"evrak tutarı"
+        created_at: dateTime
+        updated_at: bigInteger
+    AcademicYear:
+        id: id
+        name: string
+        status: boolean
+        created_at: bigInteger
+        updated_at: bigInteger
+    StudentCourdeRecord:
+        id: id
+        student_id: bigInteger foreign:student.id
+        section_id: bigInteger foreign:section.id
+        semester_id: bigInteger foreign:semester.id
+        course_id: bigInteger foreign:course.id
+        created_at: dateTime
+        udated_at: dateTime
+    StudentRecord:
+        id: id
+        academic_year_id: bigInteger foreign:academic_year.id
+        semester_id: bigInteger foreign:semester.id
+        student_id: bigInteger foreign:student.id
+        created_at: dateTime
+        updated_at: dateTime
+    Invoice:
+        id: id
+        invoice_no: bigInteger
+        transaction_id: bigInteger foreign:transaction.id
+        price: bigInteger
+        created_at: dateTime
+        updated_at: dateTime
+    Receipt:
+        id: id
+        receipt_no: string
+        invoice_id: bigInteger foreign:invoice.id
+        transaction_id: bigInteger foreign:transaction.id
+        created_at: dateTime
+        updated_at: dateTime
+    Qualification:
+        id: id
+        student_id: bigInteger foreign:student.id
+        qualification_start_date: date nullable
+        departmnent_id: bigInteger foreign:department.id
+        ic_denetim_tarih: dateTime nullable
+        ic_denetim_user_id: bigInteger nullable
+        depart_imza_end_date: date nullable
+        diplom_req_date: date nullable
+        diplom_confirm_date: date nullable
+        diplom_no: string nullable
+        islem_sira_no: string nullable
+        operator_user_id: bigInteger
+        created_at: dateTime
+        updated_at: dateTime

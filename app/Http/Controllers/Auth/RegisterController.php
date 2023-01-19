@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequset;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Doctrine\DBAL\Driver\Exception;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -114,7 +115,11 @@ class RegisterController extends Controller
         {
             if ($fileName !== 'no-image.jpg')
             {
-                unlink($this->filePath.'/'.$fileName);
+                try {
+                    unlink($this->filePath.'/'.$fileName);
+                } catch (\Exception $exception){
+                       $exception;
+                }
             }
             $file = new FileUploader($this->filePath,$request->ProfilResim,$request->name);
             $fileName = $file->upload();

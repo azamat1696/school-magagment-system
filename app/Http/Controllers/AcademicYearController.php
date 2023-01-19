@@ -98,6 +98,6 @@ class AcademicYearController extends Controller
         $user = AcademicYear::find($id);
         $user->delete();
         return redirect()->route('academic-year.index')
-            ->with('success','Akademik yıl başarıyla silindi');
+               ->with('success','Akademik yıl başarıyla silindi');
     }
 }

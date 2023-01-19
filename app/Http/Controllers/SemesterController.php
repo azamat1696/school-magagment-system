@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AcademicYear;
-use App\Models\Semesters;
+use App\Models\Semester;
 use Illuminate\Http\Request;
 
 class SemesterController extends Controller
@@ -15,7 +15,7 @@ class SemesterController extends Controller
      */
     public function index()
     {
-        $semesters = Semesters::with('academic_years')->get();
+        $semesters = Semester::with('academic_years')->get();
 
         return view('semesters.index',compact('semesters'));
     }
@@ -27,7 +27,7 @@ class SemesterController extends Controller
      */
     public function create()
     {
-        $years = AcademicYear::where('Statu',true)->get();
+        $years = AcademicYear::where('status',true)->get();
 
         return view('semesters.create',compact('years'));
     }
@@ -42,14 +42,14 @@ class SemesterController extends Controller
     {
 
         $validated = $request->validate([
-            'DonemAdi' => 'required',
+            'name' => 'required',
             'academic_years_id' => 'required',
-            'Statu' => 'required'
+            'status' => 'required'
         ]);
 
 
-        Semesters::create($validated);
-        return redirect()->route('semesters.index')->with('success','Dönem başarıyla eklendi');
+        Semester::create($validated);
+         return redirect()->route('semesters.index')->with('success','Dönem başarıyla eklendi');
     }
 
 
@@ -62,8 +62,8 @@ class SemesterController extends Controller
     public function edit($id)
     {
 
-        $semesters = Semesters::with('academic_years')->find($id);
-        $years = AcademicYear::where('Statu',true)->get();
+        $semesters = Semester::with('academic_years')->find($id);
+        $years = AcademicYear::where('status',true)->get();
         return view('semesters.edit',compact('semesters','years'));
     }
 
@@ -76,12 +76,14 @@ class SemesterController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $validated = $request->validate([
-            'DonemAdi' => 'required',
+            'name' => 'required',
             'academic_years_id' => 'required',
-            'Statu' => 'required'
+            'status' => 'required'
         ]);
-        $semesters = Semesters::find($id);
+
+        $semesters = Semester::find($id);
         $semesters->update($validated);
         return redirect()->route('semesters.index')->with('success','Dönem başarıyla güncenlendi');
     }
@@ -95,7 +97,7 @@ class SemesterController extends Controller
     public function destroy($id)
     {
 
-        $user = Semesters::find($id);
+        $user = Semester::find($id);
         $user->delete();
         return redirect()->route('semesters.index')
             ->with('success','Dönem başarıyla silindi');

@@ -8,7 +8,11 @@ class FileUploader {
     protected $path;
     protected $fileName;
     protected $file;
-    public function __construct($path,$file,$fileName)
+
+    /**
+     * @throws \Exception
+     */
+    public function __construct($path, $file, $fileName)
     {
         $this->path = $path;
         $this->file = $file;
@@ -16,6 +20,7 @@ class FileUploader {
     }
 
     public function upload(){
+
         $this->file->move($this->path,$this->fileName);
         return $this->fileName;
     }

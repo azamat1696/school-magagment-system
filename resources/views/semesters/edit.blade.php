@@ -17,13 +17,13 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label for="DonemAdi">Dönem Adı</label>
+                                <label for="name">Dönem Adı</label>
 
                                 <div class="input-group">
 
-                                    <input id="DonemAdi" type="text" class="form-control @error('DonemAdi') is-invalid @enderror" name="DonemAdi" value="{{ $semesters->DonemAdi }}" required autocomplete="DonemAdi" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $semesters->name }}" required autocomplete="name" autofocus>
 
-                                    @error('DonemAdi')
+                                    @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -60,11 +60,11 @@
                                 <label>Status</label>
 
                                 <div class="input-group">
-                                    <select  class="form-control @error('Statu') is-invalid @enderror"   name="Statu" required>
-                                        <option value="1" {{$semesters->Statu == 1 ? 'selected': ''}}>Aktif</option>
-                                        <option value="0" {{$semesters->Statu == 0 ? 'selected': ''}}>Pasif</option>
+                                    <select  class="form-control @error('status') is-invalid @enderror"   name="status" required>
+                                        <option value="1" {{$semesters->status == 1 ? 'selected': ''}}>Aktif</option>
+                                        <option value="0" {{$semesters->status == 0 ? 'selected': ''}}>Pasif</option>
                                     </select>
-                                    @error('Statu')
+                                    @error('status')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

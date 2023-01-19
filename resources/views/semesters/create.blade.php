@@ -16,13 +16,13 @@
                         <div class="col-md-3">
                         @csrf
                             <div class="form-group">
-                                <label for="DonemAdi">Dönem Adı</label>
+                                <label for="name">Dönem Adı</label>
 
                                 <div class="input-group">
 
-                                    <input id="DonemAdi" type="text" class="form-control @error('DonemAdi') is-invalid @enderror" name="DonemAdi" value="{{ old('DonemAdi') }}" required autocomplete="DonemAdi" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                    @error('DonemAdi')
+                                    @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -35,7 +35,7 @@
                         <div class="col-md-3">
                             <!-- Date dd/mm/yyyy -->
                             <div class="form-group">
-                                <label> Akademik Yıl </label>
+                                <label for="academic_years_id"> Akademik Yıl </label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('academic_years_id') is-invalid @enderror"   name="academic_years_id" required>
@@ -56,14 +56,14 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label>Status</label>
+                                <label for="status">Status</label>
 
                                 <div class="input-group">
-                                    <select  class="form-control @error('Statu') is-invalid @enderror"   name="Statu" required>
+                                    <select  class="form-control @error('status') is-invalid @enderror"   name="status" required>
                                             <option value="1">Aktif</option>
                                             <option value="0">Pasif</option>
                                     </select>
-                                    @error('Statu')
+                                    @error('status')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

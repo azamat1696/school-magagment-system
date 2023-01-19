@@ -1,30 +1,49 @@
 @extends('layouts.panel')
 
 @section('content')
-
-    <div class="row p-5 card-gray">
+    <!-- Content Header (Page header) -->
+    <div class="content-header p-4 pb-2">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('students.index')}}">Sınıflar</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('students.create')}}">Sınıf oluştur</a></li>
+                    </ol>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <h1 class="m-0"> </h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <div class="row p-5 pt-0 card-gray">
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Akademic Yıl Oluştur')}}</h3>
+                <h3 class="card-title">{{__('Öğrenci Bilgilerini Güncelle')}}</h3>
             </div>
             <div class="card-body">
 
 
-                <form action="{{route('academic-year.update',$academicYear->id)}}" method="post">
+                <form action="{{route('students.update',$student->id)}}" method="post" enctype="multipart/form-data">
+
                     <div class="row">
-                        <div class="col-3">
-
-                            @csrf
-                            @method('PUT')
+                        @csrf
+                        @method('put')
+                        <h4 class="text-bold col-12 text-center">Kişisel Bilgiler</h4>
+                        <div class="col-md-3 border-right">
+                            <div class="d-flex flex-column align-items-center text-center  "><img class="rounded-circle " width="100px" src="{{asset('student-images').'/'.$student->student_photo}}"> </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <label >Başlama Tarihi</label>
+                                <label for="name">İsim</label>
 
                                 <div class="input-group">
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $student->name }}" required autocomplete="name" autofocus>
 
-                                    <input id="BaslamaTarihi" type="date" class="form-control @error('BaslamaTarihi') is-invalid @enderror" name="BaslamaTarihi" value="{{ $academicYear->BaslamaTarihi }}" required autocomplete="BaslamaTarihi" autofocus>
-
-                                    @error('BaslamaTarihi')
+                                    @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -34,14 +53,15 @@
                             </div>
 
                         </div>
-                        <div class="col-3">
-                            <!-- Date dd/mm/yyyy -->
+                        <div class="col-md-3">
+
                             <div class="form-group">
-                                <label>Bitiş Tarihi </label>
+                                <label for="surname">Soyisim</label>
 
                                 <div class="input-group">
-                                    <input id="BitisTarihi" type="date" class="form-control @error('BitisTarihi') is-invalid @enderror" name="BitisTarihi" value="{{ $academicYear->BitisTarihi }}" required autocomplete="BitisTarihi">
-                                    @error('BitisTarihi')
+                                    <input id="surname " type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ $student->surname }}" required autocomplete="surname" autofocus>
+
+                                    @error('surname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -51,33 +71,406 @@
                             </div>
 
                         </div>
-                        {{--                        <div class="col-3">--}}
-                        {{--                            <!-- Date dd/mm/yyyy -->--}}
-                        {{--                            <div class="form-group">--}}
-                        {{--                                <label>Status</label>--}}
 
-                        {{--                                <div class="input-group">--}}
-                        {{--                                    <p class="toggleStatus">--}}
-                        {{--                                        <label class="toggleSwitch nolabel" onclick="">--}}
-                        {{--                                            <input type="checkbox" checked="checked" />--}}
-                        {{--                                            <span>--}}
-                        {{--                                              <span>Açık</span>--}}
-                        {{--                                              <span>Kapalı</span>--}}
-                        {{--                                              </span>--}}
-                        {{--                                            <a></a>--}}
-                        {{--                                        </label>--}}
-                        {{--                                     </p>--}}
-                        {{-- --}}
-                        {{--                                    @error('BitisTarihi')--}}
-                        {{--                                    <span class="invalid-feedback" role="alert">--}}
-                        {{--                                        <strong>{{ $message }}</strong>--}}
-                        {{--                                    </span>--}}
-                        {{--                                    @enderror--}}
-                        {{--                                </div>--}}
+                        <div class="col-md-3">
 
-                        {{--                            </div>--}}
+                            <div class="form-group">
+                                <label for="other_names">Diğer İsim</label>
 
-                        {{--                        </div>--}}
+                                <div class="input-group">
+                                    <input id="other_names "
+                                           type="text"
+                                           class="form-control @error('other_names') is-invalid @enderror"
+                                           name="other_names" value="{{ $student->other_names  }}"
+                                           autocomplete="other_names" autofocus>
+
+                                    @error('other_names')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="student_photo">Öğrenci profil resmi </label>
+                                <div class="input-group">
+                                    <input id="student_photo"   type="file" class="form-control @error('student_photo')    is-invalid @enderror" value="{{$student->student_photo}}" name="student_photo">
+
+                                    @error('student_photo')
+                                    <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                          </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label for="identity_no">Kimlik No</label>
+
+                                <div class="input-group">
+                                    <input id="identity_no "
+                                           type="text"
+                                           class="form-control @error('identity_no') is-invalid @enderror"
+                                           name="identity_no" value="{{ $student->identity_no }}"
+                                           required autocomplete="identity_no" autofocus>
+
+                                    @error('identity_no')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label for="identity_no">Pasaport No</label>
+
+                                <div class="input-group">
+                                    <input id="passport_no "
+                                           type="text"
+                                           class="form-control @error('passport_no') is-invalid @enderror"
+                                           name="passport_no" value="{{ $student->passport_no}}"
+                                           autocomplete="passport_no" autofocus>
+
+                                    @error('passport_no')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label for="gender">Cinsiyeti</label>
+
+                                <div class="input-group">
+                                    <select  class="form-control @error('gender') is-invalid @enderror"   name="gender" required>
+                                        <option value="Male" {{$student->gender == 'Male' ? 'selected' : ''}}>Male</option>
+                                        <option value="Female" {{$student->gender == 'Female' ? 'selected' : ''}}>Female</option>
+                                        <option value="others" {{$student->gender == 'others' ? 'selected' : ''}}>others</option>
+                                    </select>
+                                    @error('status')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="email">E-posta</label>
+                                <div class="input-group">
+                                    <input id="email "
+                                           type="email"
+                                           class="form-control @error('email') is-invalid @enderror"
+                                           name="email" value="{{ $student->email }}"
+                                           autocomplete="Email" autofocus>
+
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="phone_no">1.Telefon No</label>
+                                <div class="input-group">
+                                    <input id="phone_no"
+                                           type="text"
+                                           class="form-control @error('phone_no') is-invalid @enderror"
+                                           name="phone_no" value="{{ $student->phone_no }}"
+                                           required autocomplete="phone_no" autofocus>
+
+                                    @error('phone_no')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="phone_no_1">2. Telefon No</label>
+                                <div class="input-group">
+                                    <input id="phone_no_1"
+                                           type="text"
+                                           class="form-control @error('phone_no_1') is-invalid @enderror"
+                                           name="phone_no_1" value="{{ $student->phone_no_1 }}"
+                                           autocomplete="phone_no_1" autofocus>
+
+                                    @error('phone_no_1')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="phone_no_2">3. Telefon No</label>
+                                <div class="input-group">
+                                    <input id="phone_no_2"
+                                           type="text"
+                                           class="form-control @error('phone_no_2') is-invalid @enderror"
+                                           name="phone_no_2" value="{{ $student->phone_no_2 }}"
+                                           autocomplete="phone_no_2" autofocus>
+
+                                    @error('phone_no_2')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label for="birth_date"> Doğum Tarihi </label>
+
+                                <div class="input-group">
+
+                                    <input
+                                        type="date"
+                                        id="birth_date"
+                                        class="form-control @error('birth_date') is-invalid @enderror"
+                                        name="birth_date"
+                                        value="{{date('Y-m-d',strtotime($student->birth_date))}}"
+                                        data-inputmask-alias="datetime"
+                                        data-inputmask-inputformat="dd/mm/yyyy"
+                                        required  data-mask autocomplete="birth_date">
+
+                                    @error('birth_date')
+                                    <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                          </span>
+                                    @enderror
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label> Doğum Yeri </label>
+
+                                <div class="input-group">
+
+                                    <input
+                                        id="place_of_birth"
+                                        type="text"
+                                        class="form-control @error('place_of_birth') is-invalid @enderror"
+                                        name="place_of_birth" value="{{ $student->place_of_birth }}"
+                                        required autocomplete="place_of_birth" autofocus>
+
+
+                                    @error('place_of_birth')
+                                    <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                          </span>
+                                    @enderror
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label for="father_name">Baba Adı</label>
+
+                                <div class="input-group">
+                                    <input id="father_name " type="text" class="form-control @error('father_name') is-invalid @enderror" name="father_name" value="{{ $student->father_name }}" required autocomplete="father_name" autofocus>
+
+                                    @error('father_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label for="mother_name">Anne Adı</label>
+
+                                <div class="input-group">
+                                    <input id="mother_name" type="text" class="form-control @error('mother_name') is-invalid @enderror" name="mother_name" value="{{ $student->mother_name  }}" required autocomplete="mother_name" autofocus>
+
+                                    @error('mother_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label for="address">Adres (KKTC)</label>
+
+                                <div class="input-group">
+                                    <input id="address "
+                                           type="text"
+                                           class="form-control @error('address') is-invalid @enderror"
+                                           name="address" value="{{ $student->address }}"
+                                           required autocomplete="address" autofocus>
+
+                                    @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label for="blood_group">Kan Gurubu</label>
+
+                                <div class="input-group">
+                                    <select name="blood_group" id="blood_group" class="form-control @error('blood_group') is-invalid @enderror" required>
+                                        <option value="A+" {{ $student->blood_group == 'A+' ? 'selected' : '' }}>A+</option>
+                                        <option value="A-" {{ $student->blood_group == 'A-' ? 'selected' : '' }}>A-</option>
+                                        <option value="B+" {{ $student->blood_group == 'B+' ? 'selected' : '' }}>B+</option>
+                                        <option value="B-" {{ $student->blood_group == 'B-' ? 'selected' : '' }}>B-</option>
+                                        <option value="AB+" {{ $student->blood_group == 'AB+' ? 'selected' : '' }}>AB+</option>
+                                        <option value="Ab-" {{ $student->blood_group == 'Ab-' ? 'selected' : '' }}>Ab-</option>
+                                        <option value="O+" {{ $student->blood_group == 'O+' ? 'selected' : '' }}>O+</option>
+                                        <option value="O-" {{ $student->blood_group == 'O-' ? 'selected' : '' }}>O-</option>
+                                    </select>
+
+                                    @error('blood_group')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label for="country_id">Ülke</label>
+
+                                <div class="input-group">
+                                    <select name="country_id" id="country_id" class="form-control @error('country_id') is-invalid @enderror" required>
+                                        @foreach($countries as $country)
+                                            <option value="{{$country->id}}" {{$student->country_id == $country->id ? 'selected' : '' }}> {{$country->name}}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('country_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label>Status</label>
+
+                                <div class="input-group">
+                                    <select  class="form-control @error('status') is-invalid @enderror"   name="status" required>
+                                        <option value="1" {{ $student->status == 1 ? 'selected' : '' }}>Aktif</option>
+                                        <option value="0" {{ $student->status == 0 ? 'selected' : '' }}>Pasif</option>
+                                    </select>
+                                    @error('status')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label for="notes">Açıklama</label>
+
+                                <div class="input-group">
+
+                                    <input
+                                        type="text"
+                                        id="notes"
+                                        class="form-control @error('notes') is-invalid @enderror"
+                                        name="notes"
+                                        value="{{$student->notes}}"
+                                        autocomplete="notes">
+
+                                    @error('notes')
+                                    <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                          </span>
+                                    @enderror
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
                     </div>
                     <div class="row float-right">
                         <div class="col-md-4">

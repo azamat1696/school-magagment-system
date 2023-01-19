@@ -1,8 +1,24 @@
 @extends('layouts.panel')
 
 @section('content')
-
-    <div class="row p-5 card-gray">
+    <!-- Content Header (Page header) -->
+    <div class="content-header p-4 pb-2">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('sections.index')}}">Sınıflar</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('sections.create')}}">Sınıf oluştur</a></li>
+                    </ol>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <h1 class="m-0"> </h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <div class="row p-5 pt-0 card-gray">
         <!--  card -->
         <div class="card">
             <div class="card-header">
@@ -13,196 +29,48 @@
 
                 <form action="{{route('students.store')}}" method="post">
                     @csrf
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="row">
-
-                                <label for="imgInput">
-                                    <img src="" id="previewImage" alt="" height="150px" width="150px" style="border-radius: 3px">
-                                    <input id="imgInput" type="file" style="display: none" onchange="readUrl(this)" name="StudentPhoto">
-                                </label>
-
+                    <div class="container rounded bg-white mt-5 mb-5">
+                        <div class="row">
+                            <div class="col-md-3 border-right">
+                                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
                             </div>
-
-                        </div>
-                        <div class="col-md-4">
-
-                            <div class="form-group">
-                                <label for="DiplomaAdi">İsim</label>
-
-                                <div class="input-group">
-                                    <input id="DiplomaAdi" type="text" class="form-control @error('DiplomaAdi') is-invalid @enderror" name="DiplomaAdi" value="{{ old('DiplomaAdi') }}" required autocomplete="DiplomaAdi" autofocus>
-
-                                    @error('DiplomaAdi')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                            <div class="col-md-5 border-right">
+                                <div class="p-3 py-5">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h4 class="text-right">Profile Settings</h4>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
+                                        <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
+                                        <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
+                                        <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+                                        <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+                                        <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+                                        <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+                                        <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
+                                        <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
+                                        <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
+                                    </div>
+                                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
                                 </div>
-
                             </div>
-
-                        </div>
-                        <div class="col-md-3">
-
-                            <div class="form-group">
-                                <label for="DiplomaSoyadi">Soyisim</label>
-
-                                <div class="input-group">
-                                    <input id="DiplomaSoyadi " type="text" class="form-control @error('DiplomaSoyadi') is-invalid @enderror" name="DiplomaSoyadi" value="{{ old('DiplomaSoyadi') }}" required autocomplete="DiplomaSoyadi" autofocus>
-
-                                    @error('DiplomaSoyadi')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                            <div class="col-md-4">
+                                <div class="p-3 py-5">
+                                    <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+                                    <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
+                                    <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
                                 </div>
-
                             </div>
-
-                        </div>
-                        <div class="col-md-3">
-
-                            <div class="form-group">
-                                <label for="AnneAdi">Anne Adı</label>
-
-                                <div class="input-group">
-                                    <input id="AnneAdi " type="text" class="form-control @error('AnneAdi') is-invalid @enderror" name="AnneAdi" value="{{ old('AnneAdi') }}" required autocomplete="AnneAdi" autofocus>
-
-                                    @error('AnneAdi')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="col-md-3">
-
-                            <div class="form-group">
-                                <label for="BabaAdi">Baba Adı</label>
-
-                                <div class="input-group">
-                                    <input id="BabaAdi" type="text" class="form-control @error('BabaAdi') is-invalid @enderror" name="BabaAdi" value="{{ old('BabaAdi') }}" required autocomplete="BabaAdi" autofocus>
-
-                                    @error('BabaAdi')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="col-md-3">
-
-                            <div class="form-group">
-                                <label for="KimlikNo">Kimlik No</label>
-
-                                <div class="input-group">
-                                    <input id="KimlikNo" type="text" class="form-control @error('KimlikNo') is-invalid @enderror" name="KimlikNo" value="{{ old('KimlikNo') }}" required autocomplete="KimlikNo" autofocus>
-
-                                    @error('KimlikNo')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="col-md-3">
-
-                            <div class="form-group">
-                                <label for="PassportNo">Passaport No</label>
-
-                                <div class="input-group">
-                                    <input id="PassportNo" type="text"
-                                           class="form-control @error('PassportNo') is-invalid @enderror"
-                                           name="PassportNo" value="{{ old('PassportNo') }}"
-                                           required autocomplete="PassportNo"
-                                           autofocus
-                                    >
-
-                                    @error('PassportNo')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="col-md-3">
-
-                            <div class="form-group">
-                                <label for="Cinsiyet">Cinsiyet</label>
-
-                                <div class="input-group">
-                                    <select name="Cinsiyet" id="Cinsiyet" class="form-control @error('password') is-invalid @enderror" required>
-                                        <option value="Erkek">Erkek</option>
-                                        <option value="Kadin">Kadın</option>
-                                    </select>
-
-                                    @error('PassportNo')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="col-md-3">
-
-                            <div class="form-group">
-                                <label for="Cinsiyet">Uyruk</label>
-
-                                <div class="input-group">
-                                    <select name="Uyruk" id="Uyruk" class="form-control @error('Uyruk') is-invalid @enderror" required>
-                                        <option value="Tkm">Türkmenistan</option>
-                                        <option value="Gr">Almanya</option>
-                                        <option value="USA">Amerika</option>
-                                    </select>
-
-                                    @error('Uyruk')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-3">
-
-                            <div class="form-group">
-                                <label>Status</label>
-
-                                <div class="input-group">
-                                    <select  class="form-control @error('Statu') is-invalid @enderror"   name="Statu" required>
-                                        <option value="1">Aktif</option>
-                                        <option value="0">Pasif</option>
-                                    </select>
-                                    @error('Statu')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-
-                            </div>
-
                         </div>
                     </div>
+
+
                     <div class="row float-right">
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">

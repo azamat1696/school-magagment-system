@@ -15,11 +15,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{asset('panel/plugins/fontawesome-free/css/all.min.css')}}">
-
+    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{asset('panel/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('panel/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('panel/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('panel/dist/css/adminlte.min.css')}}">
@@ -110,7 +111,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a  href="{{route('academic-year.index')}}"  class="nav-link {{request()->routeIs('academic-year.index*') ? 'active' : ''}}">
                             <i class="nav-icon fas fa-calendar"></i>
                             <p>
-                                Akademik Sene
+                                Akademik Yıl
 
                             </p>
                         </a>
@@ -126,38 +127,75 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
 
                     </li>
-                    <li class="nav-item">
-                        <a  href="{{route('students.index')}}"  class="nav-link {{request()->routeIs('students.index*') ? 'active' : ''}}">
+                    <li class="nav-item menu-open">
+                        <a  href="#"
+                            class="nav-link {{request()->routeIs('students*') || request()->routeIs('qualifications*') || request()->routeIs('student-records*') || request()->routeIs('transactions*')  ? 'active' : ''}}">
                             <i class="nav-icon fas fa-user-graduate"></i>
                             <p>
-                                Öğrenciler
-
+                                Öğrenci işlemleri
+                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
+
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('students.index')}}" class="nav-link {{request()->routeIs('students*') ? 'active' : ''}}" style="margin-left: 5px;">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Öğrenci kayıt</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('qualifications.index')}}" class="nav-link  {{request()->routeIs('qualifications*') ? 'active' : ''}}" style="margin-left: 5px;">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Öğrenci MY Kaydı</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('student-records.index')}}" class="nav-link  {{request()->routeIs('student-records*') ? 'active' : ''}}" style="margin-left: 5px;">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p> Yıl & Dönemlik Kayıt</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('transactions.index')}}" class="nav-link  {{request()->routeIs('transactions*') ? 'active' : ''}}" style="margin-left: 5px;">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Muhasabe İşlemleri</p>
+                                </a>
+                            </li>
+                        </ul>
+
                     </li>
                     <li class="nav-item">
                         <a  href="{{route('countries.index')}}"  class="nav-link {{request()->routeIs('countries.index*') ? 'active' : ''}}">
                             <i class="nav-icon fas fa-globe"></i>
                             <p>
                                 Ülkeler
-
                             </p>
                         </a>
 
                     </li>
                     <li class="nav-item">
-                        <a  href="{{route('class-groups.index')}}"  class="nav-link {{request()->routeIs('class-groups*') ? 'active' : ''}}">
+                        <a  href="{{route('departments.index')}}"  class="nav-link {{request()->routeIs('departments*') ? 'active' : ''}}">
                             <i class="nav-icon fas fa-layer-group"></i>
                             <p>
-                                Sınıf Gurupları
+                                Bölümler
 
                             </p>
                         </a>
 
                     </li>
                     <li class="nav-item">
-                        <a  href="{{route('classes.index')}}"  class="nav-link {{request()->routeIs('classes*') ? 'active' : ''}}">
+                        <a  href="{{route('courses.index')}}"  class="nav-link {{request()->routeIs('courses*') ? 'active' : ''}}">
                             <i class="nav-icon fas fa-chalkboard"></i>
+                            <p>
+                                Dersler
+                            </p>
+                        </a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a  href="{{route('sections.index')}}"  class="nav-link {{request()->routeIs('sections*') ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-users-cog"></i>
                             <p>
                                 Sınıflar
                             </p>
@@ -197,9 +235,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{asset('panel/dist/js/adminlte.min.js')}}"></script>
 
 <!-- DataTables  & Plugins -->
-<script src="{{asset('panel/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('panel//plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('panel/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+ <script src="{{asset('panel/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('panel/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+ <script src="{{asset('panel/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset('panel/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
 <script src="{{asset('panel/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
 <script src="{{asset('panel/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
@@ -209,6 +247,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{asset('panel/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('panel/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('panel/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('plugins/inputmask/jquery.inputmask.min.js')}}"></script>
+<script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- Bootstrap Switch -->
 <script src="{{asset('panel/plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
 

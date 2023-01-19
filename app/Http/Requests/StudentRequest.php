@@ -13,7 +13,7 @@ class StudentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,28 @@ class StudentRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            //
+            'name' => 'required',
+            'surname' => 'required',
+            'other_names' => 'sometimes',
+            'identity_no' => 'required',
+            'passport_no' => 'required',
+            'gender' => 'required',
+            'country_id' => 'required',
+            'blood_group' => 'required',
+            'birth_date' => 'required',
+            'place_of_birth' => 'required',
+            'mother_name' => 'required',
+            'father_name' => 'required',
+            'email' => 'required',
+            'phone_no' => 'required',
+            'phone_no_1' => 'sometimes',
+            'phone_no_2' => 'sometimes',
+            'address' => 'required',
+            'notes' => 'sometimes',
+            'student_photo' => 'sometimes',
+            'status' => 'required',
         ];
     }
 }

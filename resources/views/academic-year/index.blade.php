@@ -36,8 +36,8 @@
                     @foreach($years as $year)
                         <tr>
                             <td>{{$year->id}}</td>
-                            <td>{{$year->BaslamaTarihi}}</td>
-                            <td>{{$year->BitisTarihi }}</td>
+                            <td>{{date('Y-m-d',strtotime($year->BaslamaTarihi))}}</td>
+                            <td>{{date('Y-m-d',strtotime($year->BitisTarihi ))}}</td>
                             <td>
 {{--                                                            <input type="checkbox" name="Statu" data-id="{{$year->id}}"   class="grid-switch-released">--}}
                                 @if($year->Statu === 1)

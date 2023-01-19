@@ -33,15 +33,16 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     @foreach($semesters as $semester)
                         <tr>
                             <td>{{$semester->id}}</td>
-                            <td>{{$semester->DonemAdi }}</td>
+                            <td>{{$semester->name }}</td>
                              <td>{{ date('Y',strtotime($semester->academic_years->BaslamaTarihi)).' - '.date('Y',strtotime($semester->academic_years->BitisTarihi ))  }}</td>
 
                             <td>
 {{--                                                            <input type="checkbox" name="Statu" data-id="{{$year->id}}"   class="grid-switch-released">--}}
-                                @if($semester->Statu === 1)
+                                @if($semester->status == 1)
                                     <span class="badge badge-pill badge-success p-2">Açık</span>
                                 @else
                                     <span class="badge badge-pill badge-danger p-2">Kapalı</span>

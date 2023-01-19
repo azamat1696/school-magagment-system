@@ -37,8 +37,8 @@
                         <tr>
                             <td>{{$item->id}}</td>
                             <td>{{$item->name }}</td>
-                            <td>{{$item->createdAt }}</td>
-                            <td>{{$item->updatedAt }}</td>
+                            <td>{{$item->created_at }}</td>
+                            <td>{{$item->updated_at }}</td>
 
                             <td>
                                 <div style="display: flex;justify-content: space-around">

@@ -18,11 +18,11 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label >Başlama Tarihi</label>
+                                <label for="BaslamaTarihi">Başlama Tarihi</label>
 
                                 <div class="input-group">
 
-                                    <input id="BaslamaTarihi" type="date" class="form-control @error('BaslamaTarihi') is-invalid @enderror" name="BaslamaTarihi" value="{{ $academicYear->BaslamaTarihi }}" required autocomplete="BaslamaTarihi" autofocus>
+                                    <input id="BaslamaTarihi" type="date" class="form-control @error('BaslamaTarihi') is-invalid @enderror" name="BaslamaTarihi" value="{{ date('Y-m-d',strtotime($academicYear->BaslamaTarihi)) }}" required autocomplete="BaslamaTarihi" autofocus>
 
                                     @error('BaslamaTarihi')
                                     <span class="invalid-feedback" role="alert">
@@ -37,10 +37,10 @@
                         <div class="col-md-3">
                             <!-- Date dd/mm/yyyy -->
                             <div class="form-group">
-                                <label>Bitiş Tarihi </label>
+                                <label for="BitisTarihi">Bitiş Tarihi </label>
 
                                 <div class="input-group">
-                                    <input id="BitisTarihi" type="date" class="form-control @error('BitisTarihi') is-invalid @enderror" name="BitisTarihi" value="{{ $academicYear->BitisTarihi }}" required autocomplete="BitisTarihi">
+                                    <input id="BitisTarihi" type="date" class="form-control @error('BitisTarihi') is-invalid @enderror" name="BitisTarihi" value="{{ date('Y-m-d',strtotime($academicYear->BitisTarihi)) }}" required autocomplete="BitisTarihi">
                                     @error('BitisTarihi')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -51,33 +51,6 @@
                             </div>
 
                         </div>
-                        {{--                        <div class="col-md-3">--}}
-                        {{--                            <!-- Date dd/mm/yyyy -->--}}
-                        {{--                            <div class="form-group">--}}
-                        {{--                                <label>Status</label>--}}
-
-                        {{--                                <div class="input-group">--}}
-                        {{--                                    <p class="toggleStatus">--}}
-                        {{--                                        <label class="toggleSwitch nolabel" onclick="">--}}
-                        {{--                                            <input type="checkbox" checked="checked" />--}}
-                        {{--                                            <span>--}}
-                        {{--                                              <span>Açık</span>--}}
-                        {{--                                              <span>Kapalı</span>--}}
-                        {{--                                              </span>--}}
-                        {{--                                            <a></a>--}}
-                        {{--                                        </label>--}}
-                        {{--                                     </p>--}}
-                        {{-- --}}
-                        {{--                                    @error('BitisTarihi')--}}
-                        {{--                                    <span class="invalid-feedback" role="alert">--}}
-                        {{--                                        <strong>{{ $message }}</strong>--}}
-                        {{--                                    </span>--}}
-                        {{--                                    @enderror--}}
-                        {{--                                </div>--}}
-
-                        {{--                            </div>--}}
-
-                        {{--                        </div>--}}
                     </div>
                     <div class="row float-right">
                         <div class="col-md-4">

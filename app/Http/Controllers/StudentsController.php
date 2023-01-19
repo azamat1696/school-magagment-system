@@ -2,12 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\FileUploader;
+use App\Http\Requests\StudentRequest;
+use App\Models\AcademicYear;
 use App\Models\Countries;
-use App\Models\Students;
+use App\Models\Student;
+use Doctrine\DBAL\Driver\Exception;
 use Illuminate\Http\Request;
 
 class StudentsController extends Controller
 {
+    protected $filePath;
+     public function __construct()
+     {
+         $this->filePath = public_path('student-images');
+     }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +25,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = Students::all();
+        $students = Student::with('country_related')->with('user')->get();
         return view('students.index',compact('students'));
     }
 
@@ -36,25 +46,34 @@ class StudentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StudentRequest $request)
     {
-        $validated = $request->validate([
-            'BaslamaTarihi' => 'required|date',
-            'BitisTarihi' => 'required||date'
-        ]);
-        AcademicYear::create($validated);
-        return redirect()->route('academic-year.index')->with('success','Akademik yıl başarıyla eklendi');
+
+
+      $fileName = 'no-image.jpg';
+      if ($request->hasFile('student_photo'))
+      {
+          try {
+              $file = new FileUploader($this->filePath, $request->student_photo,$request->name);
+              $fileName = $file->upload();
+          } catch (Exception $exception){
+              echo $exception;
+          }
+      }
+         Student::create(['student_photo' => $fileName,'user_id' => auth()->user()->id ]+$request->validated());
+        return redirect()->route('students.index')->with('success','Akademik yıl başarıyla güncenlendi');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show($id)
     {
-        //
+        $student = Student::find($id);
+        return view('students.show',compact('student'));
     }
 
     /**
@@ -66,8 +85,9 @@ class StudentsController extends Controller
     public function edit($id)
     {
 
-        $academicYear = AcademicYear::find($id);
-        return view('academic-year.edit',compact('academicYear'));
+        $student = Student::find($id);
+        $countries = Countries::all();
+        return view('students.edit',compact('countries','student'));
     }
 
     /**
@@ -77,15 +97,30 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(StudentRequest $request, $id)
     {
-        $validated = $request->validate([
-            'BaslamaTarihi' => 'required|date',
-            'BitisTarihi' => 'required||date'
-        ]);
-        $academicYear = AcademicYear::find($id);
-        $academicYear->update($validated);
-        return redirect()->route('academic-year.index')->with('success','Akademik yıl başarıyla güncenlendi');
+
+        $student = Student::find($id);
+        $fileName = $student->student_photo;
+        if ($request->hasFile('student_photo'))
+        {
+            if ($student->student_photo != 'no-image.jpg')
+            {
+                try {
+                    unlink($this->filePath."/".$fileName);
+                 }catch (Exception $exception){
+                    echo $exception;
+                }
+            }
+            try {
+                $file = new FileUploader($this->filePath, $request->student_photo,$request->name);
+                $fileName = $file->upload();
+            } catch (Exception $exception){
+                echo $exception;
+            }
+        }
+        $student->update(['student_photo' => $fileName,'user_id' => auth()->user()->id]+$request->validated());
+        return redirect()->route('students.index')->with('success','Öğrenci başarıyla güncenlendi');
     }
 
     /**
@@ -97,9 +132,17 @@ class StudentsController extends Controller
     public function destroy($id)
     {
 
-        $user = AcademicYear::find($id);
-        $user->delete();
-        return redirect()->route('academic-year.index')
-            ->with('success','Akademik yıl başarıyla silindi');
+        $student = Student::find($id);
+        if ($student->student_photo != 'no-image.jpg')
+        {
+            try {
+                unlink($this->filePath."/".$student->student_photo);
+            } catch (\Exception $exception){
+                echo $exception;
+            }
+        }
+        $student->delete();
+        return redirect()->route('students.index')
+            ->with('success','Öğrenci başarıyla silindi');
     }
 }
