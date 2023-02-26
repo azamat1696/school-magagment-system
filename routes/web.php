@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LangController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('lang/home', [LangController::class, 'index']);
+
+Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
 Route::prefix('/users')->group(function (){
     Auth::routes();
     Route::get('/', [\App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('user.index');

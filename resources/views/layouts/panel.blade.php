@@ -38,8 +38,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="font-size: large"></i></a>
             </li>
         </ul>
+
+
         <ul class="navbar-nav ml-auto">
-            <!-- Notifications Dropdown Menu -->
+{{--  Select language      --}}
+            <li class="nav-item">
+                <select class="form-control changeLang">
+
+                    <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
+
+                    <option value="tr" {{ session()->get('locale') == 'tr' ? 'selected' : '' }}>TR</option>
+                    <option value="ru" {{ session()->get('locale') == 'ru' ? 'selected' : '' }}>RU</option>
+
+                </select>
+            </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="far fa-user" style="font-size: large"></i>
@@ -66,7 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="/" class="brand-link" style="text-decoration: none">
-            <span class="brand-text font-weight-light">{{ config('app.name', 'Laravel') }}</span>
+            <span class="brand-text font-weight-light">Öngel Güzellik</span>
         </a>
 
         <!-- Sidebar -->
@@ -91,7 +104,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="{{route('home')}}" class="nav-link {{request()->routeIs('home*') ? 'active' : ''}} ">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
-                             Anasayfa
+                             {{__('main.Home Page')}}
                             </p>
                         </a>
                     </li>
@@ -251,7 +264,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- Bootstrap Switch -->
 <script src="{{asset('panel/plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
+<script type="text/javascript">
 
+
+
+    var url = "{{ route('changeLang') }}";
+
+
+
+    $(".changeLang").change(function(){
+
+        window.location.href = url + "?lang="+ $(this).val();
+
+    });
+
+
+
+</script>
 @stack('other-scripts')
 </body>
 </html>
