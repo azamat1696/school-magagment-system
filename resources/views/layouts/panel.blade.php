@@ -44,12 +44,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 {{--  Select language      --}}
             <li class="nav-item">
                 <select class="form-control changeLang">
-
                     <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
-
                     <option value="tr" {{ session()->get('locale') == 'tr' ? 'selected' : '' }}>TR</option>
                     <option value="ru" {{ session()->get('locale') == 'ru' ? 'selected' : '' }}>RU</option>
-
                 </select>
             </li>
 
@@ -104,7 +101,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="{{route('home')}}" class="nav-link {{request()->routeIs('home*') ? 'active' : ''}} ">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
-                             {{__('main.Home Page')}}
+                             {{__('main.home_page')}}
                             </p>
                         </a>
                     </li>
@@ -113,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a  href="{{route('user.index')}}"  class="nav-link {{request()->routeIs('user.index*') ? 'active' : ''}} {{request()->routeIs('user.edit*') ? 'active' : ''}} {{request()->routeIs('user.edit*') }} {{request()->routeIs('register')}}">
                             <i class="nav-icon fas fa-user-alt"></i>
                             <p>
-                                Kullanıcılar
+                                {{__('main.users')}}
 
                             </p>
                         </a>
@@ -124,7 +121,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a  href="{{route('academic-year.index')}}"  class="nav-link {{request()->routeIs('academic-year.index*') ? 'active' : ''}}">
                             <i class="nav-icon fas fa-calendar"></i>
                             <p>
-                                Akademik Yıl
+                                {{__('main.academic_year')}}
 
                             </p>
                         </a>
@@ -134,7 +131,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a  href="{{route('semesters.index')}}"  class="nav-link {{request()->routeIs('semesters.index*') ? 'active' : ''}}">
                             <i class="nav-icon fas fa-sign"></i>
                             <p>
-                                Dönem
+                                {{__('main.semester')}}
 
                             </p>
                         </a>
@@ -145,7 +142,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             class="nav-link {{request()->routeIs('students*') || request()->routeIs('qualifications*') || request()->routeIs('student-records*') || request()->routeIs('transactions*')  ? 'active' : ''}}">
                             <i class="nav-icon fas fa-user-graduate"></i>
                             <p>
-                                Öğrenci işlemleri
+                                  {{__('main.student_transactions')}}
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -154,25 +151,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li class="nav-item">
                                 <a href="{{route('students.index')}}" class="nav-link {{request()->routeIs('students*') ? 'active' : ''}}" style="margin-left: 5px;">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Öğrenci kayıt</p>
+                                    <p>{{__('main.registration')}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('qualifications.index')}}" class="nav-link  {{request()->routeIs('qualifications*') ? 'active' : ''}}" style="margin-left: 5px;">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Öğrenci MY Kaydı</p>
+                                    <p>{{__('main.profession_qualification')}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('student-records.index')}}" class="nav-link  {{request()->routeIs('student-records*') ? 'active' : ''}}" style="margin-left: 5px;">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p> Yıl & Dönemlik Kayıt</p>
+                                    <p> {{__('main.year_semester_register')}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('transactions.index')}}" class="nav-link  {{request()->routeIs('transactions*') ? 'active' : ''}}" style="margin-left: 5px;">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Muhasabe İşlemleri</p>
+                                    <p>{{__('main.accounting_transactions')}}</p>
                                 </a>
                             </li>
                         </ul>
@@ -182,7 +179,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a  href="{{route('countries.index')}}"  class="nav-link {{request()->routeIs('countries.index*') ? 'active' : ''}}">
                             <i class="nav-icon fas fa-globe"></i>
                             <p>
-                                Ülkeler
+                                {{__('main.countries')}}
                             </p>
                         </a>
 
@@ -191,7 +188,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a  href="{{route('departments.index')}}"  class="nav-link {{request()->routeIs('departments*') ? 'active' : ''}}">
                             <i class="nav-icon fas fa-layer-group"></i>
                             <p>
-                                Bölümler
+                                {{__('main.departments')}}
 
                             </p>
                         </a>
@@ -201,7 +198,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a  href="{{route('courses.index')}}"  class="nav-link {{request()->routeIs('courses*') ? 'active' : ''}}">
                             <i class="nav-icon fas fa-chalkboard"></i>
                             <p>
-                                Dersler
+                                {{__('main.courses')}}
                             </p>
                         </a>
 
@@ -210,7 +207,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a  href="{{route('sections.index')}}"  class="nav-link {{request()->routeIs('sections*') ? 'active' : ''}}">
                             <i class="nav-icon fas fa-users-cog"></i>
                             <p>
-                                Sınıflar
+                                {{__('main.classes')}}
                             </p>
                         </a>
 

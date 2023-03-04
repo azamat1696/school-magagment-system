@@ -7,8 +7,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('transactions.index')}}">Makbuz / Faturar</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('transactions.create',$student->id)}}">Makbuz/Fatura Oluştur</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('transactions.index')}}">{{ __('main.invoice').'/'.__('main.receipt') }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('transactions.create',$student->id)}}">{{ __('main.invoice').'/'.__('main.receipt').' '.__('main.create') }}</a></li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -22,7 +22,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Öğrenci  Makbuz / Fatura')}}</h3>
+                <h3 class="card-title">{{ __('student') .' '.__('main.invoice').'/'.__('main.receipt') }}</h3>
             </div>
             <div class="card-body">
 
@@ -33,7 +33,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="student_id">Öğrenci İsim & Soyismi</label>
+                                <label for="student_id">{{__('main.name_surname')}}</label>
 
                                 <div class="input-group">
                                     <input id="student_id" type="text" class="form-control @error('student_id') is-invalid @enderror"
@@ -55,7 +55,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="transaction_no">İşlem No</label>
+                                <label for="transaction_no">{{__('main.transaction_no')}}</label>
                                 <div class="input-group">
                                     <input id="transaction_no" type="text" class="form-control @error('transaction_no') is-invalid @enderror"
                                            name="transaction_no"
@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="department_id">Bölüm </label>
+                                <label for="department_id">{{__('main.departments')}} </label>
                                 <div class="input-group">
                                     <select  class="form-control @error('department_id') is-invalid @enderror"   name="department_id" required>
                                         @foreach($departments as $department)
@@ -94,7 +94,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="ayrilma_nedeni"> Açıklama </label>
+                                <label for="ayrilma_nedeni"> {{__('main.description')}} </label>
 
                                 <div class="input-group">
 
@@ -118,7 +118,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="islem_tarih">İşlem Tarihi</label>
+                                <label for="islem_tarih">{{__('main.prosses_date')}}</label>
                                 <div class="input-group">
                                     <input
                                         type="date"
@@ -140,7 +140,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="vade_tarih">Vade Tarihi</label>
+                                <label for="vade_tarih">{{__('main.due_date')}}</label>
                                 <div class="input-group">
                                     <input
                                         type="date"
@@ -162,13 +162,13 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="transaction_type">İşem Tipi</label>
+                                <label for="transaction_type">{{__('main.prosses_type')}}</label>
                                 <div class="input-group">
                                     <select  class="form-control @error('transaction_type') is-invalid @enderror"   name="transaction_type" required>
-                                        <option value="invoice">Fatura</option>
-                                        <option value="receipt">Makbuz</option>
-                                        <option value="deduction">Kesinti</option>
-                                        <option value="extra_fee">Ekstra Ücret</option>
+                                        <option value="invoice">{{__('main.invoice')}}</option>
+                                        <option value="receipt">{{__('main.receipt')}}</option>
+                                        <option value="deduction">{{__('main.deduction')}}</option>
+                                        <option value="extra_fee">{{__('main.extra_fee')}}</option>
                                     </select>
                                     @error('transaction_type')
                                     <span class="invalid-feedback" role="alert">
@@ -182,7 +182,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="qualification_id">MY İşlem Sıra No</label>
+                                <label for="qualification_id">{{__('main.profession_qualification_transaction_no')}}</label>
                                 <div class="input-group">
                                     <select  class="form-control @error('qualification_id') is-invalid @enderror"   name="qualification_id" required>
                                         @foreach($student->qualification as $qualification)
@@ -201,7 +201,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="semester_id">Dönem</label>
+                                <label for="semester_id">{{__('main.semester')}}</label>
                                 <div class="input-group">
                                     <select  class="form-control @error('semester_id') is-invalid @enderror"   name="semester_id" required>
                                         @foreach($semesters as $semester)
@@ -220,7 +220,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="currency_type">Para Birimi</label>
+                                <label for="currency_type">{{__('main.money_currency')}}</label>
                                 <div class="input-group">
                                     <select  class="form-control @error('currency_type') is-invalid @enderror"   name="currency_type" required>
                                             <option value="TL">TL</option>
@@ -239,7 +239,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="amount_payed">Ödeme Miktarı</label>
+                                <label for="amount_payed">{{__('main.payed_amount')}}</label>
                                 <div class="input-group">
                                     <input id="amount_payed" type="number" class="form-control @error('amount_payed') is-invalid @enderror"
                                            name="amount_payed"
@@ -260,7 +260,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label>Status</label>
+                                <label>{{__('main.status')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('status') is-invalid @enderror"   name="status" required>
@@ -283,7 +283,7 @@
                     <div class="row float-right">
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Kaydet') }}
+                                {{ __('main.save') }}
                             </button>
                         </div>
                     </div>

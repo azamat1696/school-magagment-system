@@ -158,7 +158,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="email">E-posta</label>
+                                <label for="email">{{__('main.email')}}</label>
                                 <div class="input-group">
                                     <input id="email "
                                            type="email"
@@ -179,7 +179,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="phone_no">1.Telefon No</label>
+                                <label for="phone_no">1. {{__('main.phone')}}</label>
                                 <div class="input-group">
                                     <input id="phone_no"
                                            type="text"
@@ -199,7 +199,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="phone_no_1">2. Telefon No</label>
+                                <label for="phone_no_1">2. {{__('main.phone')}}</label>
                                 <div class="input-group">
                                     <input id="phone_no_1"
                                            type="text"
@@ -219,7 +219,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="phone_no_2">3. Telefon No</label>
+                                <label for="phone_no_2">3. {{__('main.phone')}}</label>
                                 <div class="input-group">
                                     <input id="phone_no_2"
                                            type="text"
@@ -241,7 +241,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="birth_date"> Doğum Tarihi </label>
+                                <label for="birth_date"> {{__('main.birth_date')}} </label>
 
                                 <div class="input-group">
 
@@ -268,7 +268,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label> Doğum Yeri </label>
+                                <label> {{__('main.birth_place')}} </label>
 
                                 <div class="input-group">
 
@@ -295,7 +295,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="father_name">Baba Adı</label>
+                                <label for="father_name">{{__('main.fathers_name')}}</label>
 
                                 <div class="input-group">
                                     <input id="father_name " type="text" class="form-control @error('father_name') is-invalid @enderror" name="father_name" value="{{ old('father_name') }}" required autocomplete="father_name" autofocus>
@@ -314,7 +314,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="mother_name">Anne Adı</label>
+                                <label for="mother_name">{{__('main.mothers_name')}}</label>
 
                                 <div class="input-group">
                                     <input id="mother_name" type="text" class="form-control @error('mother_name') is-invalid @enderror" name="mother_name" value="{{ old('mother_name') }}" required autocomplete="mother_name" autofocus>
@@ -332,7 +332,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="address">Adres (KKTC)</label>
+                                <label for="address">{{ __('main.address') }} (KKTC)</label>
 
                                 <div class="input-group">
                                     <input id="address "
@@ -382,7 +382,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="country_id">Ülke</label>
+                                <label for="country_id">{{__('main.countries')}}</label>
 
                                 <div class="input-group">
                                     <select name="country_id" id="country_id" class="form-control @error('country_id') is-invalid @enderror" required>
@@ -404,7 +404,7 @@
                          <div class="col-md-3">
 
                             <div class="form-group">
-                                <label>Status</label>
+                                <label>{{__('main.status')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('status') is-invalid @enderror"   name="status" required>
