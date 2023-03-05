@@ -7,7 +7,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('sections.index')}}"> Sınıflar /</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('sections.index')}}"> {{__('main.classes')}} /</a></li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -23,7 +23,7 @@
             <div class="card-header">
                 <h1 class="card-title"> <i class="fa fa-users"></i> {{__('Sınıflar ')}}</h1>
                 @role('Super-Admin')
-                <a href="{{route('sections.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> Yeni</i></a>
+                <a href="{{route('sections.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> {{__('main.mew')}}</i></a>
                 @endrole
             </div>
             <div class="card-body">
@@ -42,20 +42,20 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Sınıf Adı</th>
-                        <th>Sınıf No</th>
-                        <th>Ders Adı</th>
-                        <th>Öğretmen Adı</th>
-                        <th>Teori Başlama </th>
-                        <th>Teori Bitiş </th>
-                        <th>Pratik Bitiş </th>
-                        <th>Pratik Başlama </th>
-                        <th>Des İmza Bitiş </th>
-                        <th>Son Güncelleyen</th>
-                        <th>Status</th>
-                        <th>Güncelleme  </th>
-                        <th>Oluşturma  </th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.class_name')}}</th>
+                        <th>{{__('main.class_no')}}</th>
+                        <th>{{__('main.course_name')}}</th>
+                        <th>{{__('main.instructor_name')}}</th>
+                        <th>{{__('main.theory_start')}} </th>
+                        <th>{{__('main.theory_end')}} </th>
+                        <th>{{__('main.practice_start')}} </th>
+                        <th>{{__('main.practice_end')}}</th>
+                        <th>{{__('main.course_signature_end')}}</th>
+                        <th>{{__('main.last_edited_user')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{__('main.edited_date')}}  </th>
+                        <th>{{__('main.created_date')}}  </th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -97,20 +97,20 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Sınıf Adı</th>
-                        <th>Sınıf No</th>
-                        <th>Ders Adı</th>
-                        <th>Öğretmen Adı</th>
-                        <th>Teori Başlama </th>
-                        <th>Teori Bitiş </th>
-                        <th>Pratik Bitiş </th>
-                        <th>Pratik Başlama </th>
-                        <th>Des İmza Bitiş </th>
-                         <th>Son Güncelleyen</th>
-                        <th>Status</th>
-                        <th>Güncelleme  </th>
-                        <th>Oluşturma  </th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.class_name')}}</th>
+                        <th>{{__('main.class_no')}}</th>
+                        <th>{{__('main.course_name')}}</th>
+                        <th>{{__('main.instructor_name')}}</th>
+                        <th>{{__('main.theory_start')}} </th>
+                        <th>{{__('main.theory_end')}} </th>
+                        <th>{{__('main.practice_start')}} </th>
+                        <th>{{__('main.practice_end')}}</th>
+                        <th>{{__('main.course_signature_end')}}</th>
+                        <th>{{__('main.last_edited_user')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{__('main.edited_date')}}  </th>
+                        <th>{{__('main.created_date')}}  </th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </tfoot>
                 </table>

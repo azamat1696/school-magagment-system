@@ -6,7 +6,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Akademic Yıl Oluştur')}}</h3>
+                <h3 class="card-title">{{__('main.academic_year_create')}}</h3>
             </div>
             <div class="card-body">
 
@@ -16,7 +16,7 @@
                         <div class="col-md-3">
                         @csrf
                             <div class="form-group">
-                                <label for="name">Dönem Adı</label>
+                                <label for="name">{{__('main.semester_name')}}</label>
 
                                 <div class="input-group">
 
@@ -35,7 +35,7 @@
                         <div class="col-md-3">
                             <!-- Date dd/mm/yyyy -->
                             <div class="form-group">
-                                <label for="academic_years_id"> Akademik Yıl </label>
+                                <label for="academic_years_id"> {{__('main.academic_year')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('academic_years_id') is-invalid @enderror"   name="academic_years_id" required>
@@ -56,12 +56,12 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="status">Status</label>
+                                <label for="status">{{__('main.status')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('status') is-invalid @enderror"   name="status" required>
-                                            <option value="1">Aktif</option>
-                                            <option value="0">Pasif</option>
+                                            <option value="1">{{__('main.active')}}</option>
+                                            <option value="0">{{__('main.passive')}}</option>
                                     </select>
                                     @error('status')
                                     <span class="invalid-feedback" role="alert">
@@ -77,7 +77,7 @@
                     <div class="row float-right">
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Kaydet') }}
+                                {{ __('main.save') }}
                             </button>
                         </div>
                     </div>

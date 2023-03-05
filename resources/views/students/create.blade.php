@@ -7,8 +7,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('students.index')}}">Sınıflar</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('students.create')}}">Sınıf oluştur</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('students.index')}}">{{__('main.classes')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('students.create')}}">{{__('main.create_class')}}</a></li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -22,7 +22,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Öğrenci Oluştur')}}</h3>
+                <h3 class="card-title">{{__('main.create_student')}}</h3>
             </div>
             <div class="card-body">
 
@@ -30,10 +30,10 @@
                 <form action="{{route('students.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <h4 class="text-bold col-12 text-center">Kişisel Bilgiler</h4>
+                        <h4 class="text-bold col-12 text-center">{{__('main.personal_information')}}</h4>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="name">İsim</label>
+                                <label for="name">{{__('main.name')}}</label>
 
                                 <div class="input-group">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -51,7 +51,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="surname">Soyisim</label>
+                                <label for="surname">{{__('main.surname')}}</label>
 
                                 <div class="input-group">
                                     <input id="surname " type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
@@ -70,7 +70,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="other_names">Diğer İsim</label>
+                                <label for="other_names">{{__('main.other_name')}}</label>
 
                                 <div class="input-group">
                                     <input id="other_names "
@@ -92,7 +92,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="identity_no">Kimlik No</label>
+                                <label for="identity_no">{{__('main.identify_no')}}</label>
 
                                 <div class="input-group">
                                     <input id="identity_no "
@@ -114,7 +114,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="identity_no">Pasaport No</label>
+                                <label for="identity_no">{{__('main.passport_no')}}</label>
 
                                 <div class="input-group">
                                     <input id="passport_no "
@@ -137,13 +137,13 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="gender">Cinsiyeti</label>
+                                <label for="gender">{{__('main.gender')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('gender') is-invalid @enderror"   name="gender" required>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                        <option value="others">others</option>
+                                        <option value="Male">{{__('main.male')}}</option>
+                                        <option value="Female">{{__('main.female')}}</option>
+                                        <option value="others">{{__('main.other')}}</option>
                                     </select>
                                     @error('status')
                                     <span class="invalid-feedback" role="alert">
@@ -355,7 +355,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="blood_group">Kan Gurubu</label>
+                                <label for="blood_group">{{__('main.blood_group')}}</label>
 
                                 <div class="input-group">
                                     <select name="blood_group" id="blood_group" class="form-control @error('blood_group') is-invalid @enderror" required>
@@ -424,7 +424,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="notes">Açıklama</label>
+                                <label for="notes">{{__('main.description')}}</label>
 
                                 <div class="input-group">
 
@@ -450,7 +450,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="student_photo">Öğrenci profil resmi </label>
+                                <label for="student_photo">{{__('main.student_profile_picture')}}</label>
                                 <div class="input-group">
                                     <input id="student_photo"   type="file" class="form-control @error('student_photo')   is-invalid @enderror" name="student_photo">
 
@@ -469,7 +469,7 @@
                     <div class="row float-right">
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Kaydet') }}
+                                {{ __('main.save') }}
                             </button>
                         </div>
                     </div>

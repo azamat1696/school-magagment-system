@@ -7,8 +7,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('students.index')}}">Sınıflar</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('students.create')}}">Sınıf oluştur</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('students.index')}}">{{__('main.classes')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('students.create')}}">{{__('main.create_class')}}</a></li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -22,7 +22,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Öğrenci Bilgilerini Güncelle')}}</h3>
+                <h3 class="card-title">{{__('main.student_profile_update')}}</h3>
             </div>
             <div class="card-body">
 
@@ -32,13 +32,13 @@
                     <div class="row">
                         @csrf
                         @method('put')
-                        <h4 class="text-bold col-12 text-center">Kişisel Bilgiler</h4>
+                        <h4 class="text-bold col-12 text-center">{{__('main.personal_information')}}</h4>
                         <div class="col-md-3 border-right">
                             <div class="d-flex flex-column align-items-center text-center  "><img class="rounded-circle " width="100px" src="{{asset('student-images').'/'.$student->student_photo}}"> </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="name">İsim</label>
+                                <label for="name">{{__('main.name')}}</label>
 
                                 <div class="input-group">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $student->name }}" required autocomplete="name" autofocus>
@@ -56,7 +56,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="surname">Soyisim</label>
+                                <label for="surname">{{__('main.surname')}}</label>
 
                                 <div class="input-group">
                                     <input id="surname " type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ $student->surname }}" required autocomplete="surname" autofocus>
@@ -75,7 +75,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="other_names">Diğer İsim</label>
+                                <label for="other_names">{{__('main.other_name')}}</label>
 
                                 <div class="input-group">
                                     <input id="other_names "
@@ -96,7 +96,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="student_photo">Öğrenci profil resmi </label>
+                                <label for="student_photo">{{__('main.student_profile_picture')}} </label>
                                 <div class="input-group">
                                     <input id="student_photo"   type="file" class="form-control @error('student_photo')    is-invalid @enderror" value="{{$student->student_photo}}" name="student_photo">
 
@@ -112,7 +112,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="identity_no">Kimlik No</label>
+                                <label for="identity_no">{{__('main.identify_no')}}</label>
 
                                 <div class="input-group">
                                     <input id="identity_no "
@@ -134,7 +134,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="identity_no">Pasaport No</label>
+                                <label for="identity_no">{{__('main.passport_no')}}</label>
 
                                 <div class="input-group">
                                     <input id="passport_no "
@@ -157,13 +157,13 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="gender">Cinsiyeti</label>
+                                <label for="gender">{{__('main.gender')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('gender') is-invalid @enderror"   name="gender" required>
-                                        <option value="Male" {{$student->gender == 'Male' ? 'selected' : ''}}>Male</option>
-                                        <option value="Female" {{$student->gender == 'Female' ? 'selected' : ''}}>Female</option>
-                                        <option value="others" {{$student->gender == 'others' ? 'selected' : ''}}>others</option>
+                                        <option value="Male" {{$student->gender == 'Male' ? 'selected' : ''}}>{{__('main.male')}}</option>
+                                        <option value="Female" {{$student->gender == 'Female' ? 'selected' : ''}}>{{__('main.female')}}</option>
+                                        <option value="others" {{$student->gender == 'others' ? 'selected' : ''}}>{{__('main.other')}}</option>
                                     </select>
                                     @error('status')
                                     <span class="invalid-feedback" role="alert">
@@ -178,7 +178,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="email">E-posta</label>
+                                <label for="email">{{__('main.email')}}</label>
                                 <div class="input-group">
                                     <input id="email "
                                            type="email"
@@ -199,7 +199,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="phone_no">1.Telefon No</label>
+                                <label for="phone_no">1.{{__('main.phone')}}</label>
                                 <div class="input-group">
                                     <input id="phone_no"
                                            type="text"
@@ -219,7 +219,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="phone_no_1">2. Telefon No</label>
+                                <label for="phone_no_1">2. {{ __('main.phone')}}</label>
                                 <div class="input-group">
                                     <input id="phone_no_1"
                                            type="text"
@@ -239,7 +239,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="phone_no_2">3. Telefon No</label>
+                                <label for="phone_no_2">3. {{__('main.phone')}}</label>
                                 <div class="input-group">
                                     <input id="phone_no_2"
                                            type="text"
@@ -261,7 +261,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="birth_date"> Doğum Tarihi </label>
+                                <label for="birth_date"> {{__('main.birth_date')}} </label>
 
                                 <div class="input-group">
 
@@ -289,7 +289,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label> Doğum Yeri </label>
+                                <label> {{__('main.birth_place')}} </label>
 
                                 <div class="input-group">
 
@@ -316,7 +316,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="father_name">Baba Adı</label>
+                                <label for="father_name">{{__('main.fathers_name')}}</label>
 
                                 <div class="input-group">
                                     <input id="father_name " type="text" class="form-control @error('father_name') is-invalid @enderror" name="father_name" value="{{ $student->father_name }}" required autocomplete="father_name" autofocus>
@@ -335,7 +335,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="mother_name">Anne Adı</label>
+                                <label for="mother_name">{{__('main.mothers_name')}}</label>
 
                                 <div class="input-group">
                                     <input id="mother_name" type="text" class="form-control @error('mother_name') is-invalid @enderror" name="mother_name" value="{{ $student->mother_name  }}" required autocomplete="mother_name" autofocus>
@@ -353,7 +353,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="address">Adres (KKTC)</label>
+                                <label for="address">{{__('main.address')}} (KKTC)</label>
 
                                 <div class="input-group">
                                     <input id="address "
@@ -376,7 +376,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="blood_group">Kan Gurubu</label>
+                                <label for="blood_group">{{__('main.blood_group')}}</label>
 
                                 <div class="input-group">
                                     <select name="blood_group" id="blood_group" class="form-control @error('blood_group') is-invalid @enderror" required>
@@ -403,7 +403,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="country_id">Ülke</label>
+                                <label for="country_id">{{__('main.countries')}}</label>
 
                                 <div class="input-group">
                                     <select name="country_id" id="country_id" class="form-control @error('country_id') is-invalid @enderror" required>
@@ -425,12 +425,12 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label>Status</label>
+                                <label>{{__('main.status')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('status') is-invalid @enderror"   name="status" required>
-                                        <option value="1" {{ $student->status == 1 ? 'selected' : '' }}>Aktif</option>
-                                        <option value="0" {{ $student->status == 0 ? 'selected' : '' }}>Pasif</option>
+                                        <option value="1" {{ $student->status == 1 ? 'selected' : '' }}>{{__('main.active')}}</option>
+                                        <option value="0" {{ $student->status == 0 ? 'selected' : '' }}>{{__('main.passive')}}</option>
                                     </select>
                                     @error('status')
                                     <span class="invalid-feedback" role="alert">
@@ -446,7 +446,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="notes">Açıklama</label>
+                                <label for="notes">{{__('main.description')}}</label>
 
                                 <div class="input-group">
 
@@ -475,7 +475,7 @@
                     <div class="row float-right">
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Kaydet') }}
+                                {{ __('save') }}
                             </button>
                         </div>
                     </div>

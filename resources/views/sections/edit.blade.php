@@ -7,7 +7,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('sections.index')}}">Sınıflar</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('sections.index')}}">{{__('main.classes')}}</a></li>
                         <li class="breadcrumb-item"><a href="{{route('sections.edit',$section->id)}}">Sınıf Düzenle</a></li>
                     </ol>
                 </div><!-- /.col -->

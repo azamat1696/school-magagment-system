@@ -7,7 +7,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('student-records.index')}}">Öğrenci Akademik Yıl & Dönem Kayıtları</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('student-records.index')}}">{{__('main.student_academic_year_semester_registrations')}}</a></li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -22,9 +22,9 @@
 
          <div class="card">
             <div class="card-header">
-                <h1 class="card-title"> <i class="fa fa-chalkboard pr-1"></i> {{__('Öğrenci kayıtları')}}</h1>
+                <h1 class="card-title"> <i class="fa fa-chalkboard pr-1"></i> {{__('main.student_registrations')}}</h1>
                 @role('Super-Admin')
-                <a href="{{ route('student-records.show') }}" class="btn btn-primary float-right"> <i class="fa fa-plus"> Yeni</i></a>
+                <a href="{{ route('student-records.show') }}" class="btn btn-primary float-right"> <i class="fa fa-plus"> {{__('new')}}</i></a>
                 @endrole
             </div>
 
@@ -43,14 +43,14 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Öğrenci Adı & Soyadı</th>
-                        <th>Kayıt Olduğu Senesi</th>
-                        <th>Kayıt Olduğu Dönem</th>
-                        <th>Kayıt Eden Kullanıcı</th>
-                        <th>Status</th>
-                        <th>Güncelleme Tarihi </th>
-                        <th>Oluşturma Tarihi </th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.student_name_surname')}}</th>
+                        <th>{{__('main.register_date')}}</th>
+                        <th>{{__('main.registered_semester')}}</th>
+                        <th>{{__('main.registered_user')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{__('main.edited_date')}}</th>
+                        <th>{{__('main.created_date')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -65,20 +65,20 @@
                             <td>
 
                                 @if($item->status == 1)
-                                    <span class="badge badge-pill badge-success p-2">Açık</span>
+                                    <span class="badge badge-pill badge-success p-2">{{__('main.opened')}}</span>
                                 @else
-                                    <span class="badge badge-pill badge-danger p-2">Kapalı</span>
+                                    <span class="badge badge-pill badge-danger p-2">{{__('main.closed')}}</span>
                                 @endif
                             </td>
                             <td>{{ date('Y-m-d',strtotime($item->created_at )) }}</td>
                             <td>{{ date('Y-m-d',strtotime($item->updated_at))  }}</td>
                             <td>
                                 <div style="display: flex;justify-content: space-around">
-                                    <a class="btn btn-primary" href="{{ route('student-records.edit',$item->id) }}"><i class="nav-icon fas fa-edit"></i> Düzenle</a>
+                                    <a class="btn btn-primary" href="{{ route('student-records.edit',$item->id) }}"><i class="nav-icon fas fa-edit"></i> {{__('main.edit')}}</a>
                                     <form action="{{ route('student-records.destroy',$item->id) }}" method="POST" >
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"> <i class="nav-icon fas fa-trash"></i> Sil</button>
+                                        <button type="submit" class="btn btn-danger"> <i class="nav-icon fas fa-trash"></i>{{__('main.delete')}} </button>
                                     </form>
                                 </div>
                             </td>
@@ -88,14 +88,14 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Öğrenci Adı & Soyadı</th>
-                        <th>Kayıt Olduğu Senesi</th>
-                        <th>Kayıt Olduğu Dönem</th>
-                        <th>Kayıt Eden Kullanıcı</th>
-                        <th>Status</th>
-                        <th>Güncelleme Tarihi </th>
-                        <th>Oluşturma Tarihi </th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.student_name_surname')}}</th>
+                        <th>{{__('main.register_date')}}</th>
+                        <th>{{__('main.registered_semester')}}</th>
+                        <th>{{__('main.registered_user')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{__('main.edited_date')}}</th>
+                        <th>{{__('main.created_date')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </tfoot>
                 </table>

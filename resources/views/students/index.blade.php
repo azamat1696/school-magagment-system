@@ -7,7 +7,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('students.index')}}">Sınıflar /</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('students.index')}}">{{__('main.classes')}} /</a></li>
                      </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -21,9 +21,9 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h1 class="card-title"> <i class="fa fa-people-carry"></i> {{__('Öğrenciler')}}</h1>
+                <h1 class="card-title"> <i class="fa fa-people-carry"></i> {{__('main.students')}}</h1>
                 @role('Super-Admin')
-                <a href="{{route('students.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> Yeni</i></a>
+                <a href="{{route('students.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> {{__('new')}}</i></a>
                 @endrole
             </div>
             <div class="card-body">
@@ -41,26 +41,26 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Ad & Soyad </th>
-                        <th>Kimlik No</th>
-                        <th>Pasaport No</th>
-                        <th>Cinsiyeti</th>
-                        <th>Ülkesi</th>
-                        <th>Kan Gurubu</th>
-                        <th>Doğum Tarihi</th>
-                        <th>Doğum Yeri</th>
-                        <th>Anne Adı</th>
-                        <th>Baba Adı</th>
-                        <th>E-posta</th>
-                        <th>Telefon 1</th>
-                        <th>Telefon 2</th>
-                        <th>Telefon 3</th>
-                        <th>KKTC adres</th>
-                        <th>Son düzenleyen kullanıcı</th>
-                        <th>Düzenleme Tarihi</th>
-                        <th>Oluşturma Tariihi</th>
-                        <th>Statüsü</th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.name_surname')}} </th>
+                        <th>{{__('main.identity_no')}}</th>
+                        <th>{{__('main.passport_no')}}</th>
+                        <th>{{__('main.gender')}}</th>
+                        <th>{{__('main.country')}}</th>
+                        <th>{{__('main.blood_group')}}</th>
+                        <th>{{__('main.birth_date')}}</th>
+                        <th>{{__('main.birth_place')}}</th>
+                        <th>{{__('main.mothers_name')}}</th>
+                        <th>{{__('main.fathers_name')}}</th>
+                        <th>{{__('main.email')}}</th>
+                        <th>{{__('main.phone')}} 1</th>
+                        <th>{{__('main.phone')}} 2</th>
+                        <th>{{__('main.phone')}} 3</th>
+                        <th>KKTC {{__('main.address')}}</th>
+                        <th>{{__('main.last_edited_user')}}</th>
+                        <th>{{__('main.edited_date')}}</th>
+                        <th>{{__('main.created_date')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{ __('main.actions') }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -115,26 +115,26 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Ad & Soyad </th>
-                        <th>Kimlik No</th>
-                        <th>Pasaport No</th>
-                        <th>Cinsiyeti</th>
-                        <th>Ülkesi</th>
-                        <th>Kan Gurubu</th>
-                        <th>Doğum Tarihi</th>
-                        <th>Doğum Yeri</th>
-                        <th>Anne Adı</th>
-                        <th>Baba Adı</th>
-                        <th>E-posta</th>
-                        <th>Telefon 1</th>
-                        <th>Telefon 2</th>
-                        <th>Telefon 3</th>
-                        <th>KKTC adres</th>
-                         <th>Son düzenleyen kullanıcı</th>
-                        <th>Düzenleme Tarihi</th>
-                        <th>Oluşturma Tariihi</th>
-                        <th>Statüsü</th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.name_surname')}} </th>
+                        <th>{{__('main.identity_no')}}</th>
+                        <th>{{__('main.passport_no')}}</th>
+                        <th>{{__('main.gender')}}</th>
+                        <th>{{__('main.country')}}</th>
+                        <th>{{__('main.blood_group')}}</th>
+                        <th>{{__('main.birth_date')}}</th>
+                        <th>{{__('main.birth_place')}}</th>
+                        <th>{{__('main.mothers_name')}}</th>
+                        <th>{{__('main.fathers_name')}}</th>
+                        <th>{{__('main.email')}}</th>
+                        <th>{{__('main.phone')}} 1</th>
+                        <th>{{__('main.phone')}} 2</th>
+                        <th>{{__('main.phone')}} 3</th>
+                        <th>KKTC {{__('main.address')}}</th>
+                        <th>{{__('main.last_edited_user')}}</th>
+                        <th>{{__('main.edited_date')}}</th>
+                        <th>{{__('main.created_date')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{ __('main.actions') }}</th>
                     </tr>
                     </tfoot>
                 </table>

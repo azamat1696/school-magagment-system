@@ -7,8 +7,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('student-records.index')}}">Akademik Yıl & Dönemlik Kayıt</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('student-records.edit',$studentRecord->id)}}">Akademik Yıl & Dönemlik Kayıt Oluştur</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('student-records.index')}}">{{__('main.academic_year_semester_register')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('student-records.edit',$studentRecord->id)}}">{{__('main.academic_year_semester_register_create')}}</a></li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -22,7 +22,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__(' Düzenle')}}</h3>
+                <h3 class="card-title">{{__('main.edit')}}</h3>
             </div>
             <div class="card-body">
 
@@ -36,7 +36,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="student_id">Öğrenci İsim & Soyismi</label>
+                                <label for="student_id">{{__('main.student_name_surname')}}</label>
                                 <div class="input-group">
                                     <select  class="form-control js-example-tags @error('student_id') is-invalid @enderror"   name="student_id">
                                         @foreach($students as $student)
@@ -57,7 +57,7 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="academic_year_id">Kayıt Olacağı bölüm</label>
+                                <label for="academic_year_id">{{__('main.select_the_section_to_register')}}</label>
                                 <div class="input-group">
                                     <select  class="form-control @error('academic_year_id') is-invalid @enderror"   name="academic_year_id" required>
                                         @foreach($academicYears as $academicYear)
@@ -79,7 +79,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="semester_id">Kayıt Olacağı Dönem</label>
+                                <label for="semester_id">{{__('main.select_the_department_to_register')}}</label>
                                 <div class="input-group">
                                     <select  class="form-control @error('semester_id') is-invalid @enderror"   name="semester_id" required>
                                         @foreach($semesters as $semester)
@@ -99,12 +99,12 @@
                         <div class="col-md-4">
 
                             <div class="form-group">
-                                <label>Status</label>
+                                <label>{{__('main.status')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('status') is-invalid @enderror"   name="status" required>
-                                        <option value="1">Aktif</option>
-                                        <option value="0">Pasif</option>
+                                        <option value="1">{{__('main.active')}}</option>
+                                        <option value="0">{{__('main.passive')}}</option>
                                     </select>
                                     @error('status')
                                     <span class="invalid-feedback" role="alert">
@@ -121,7 +121,7 @@
                     <div class="row float-right">
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Kaydet') }}
+                                {{ __('main.save') }}
                             </button>
                         </div>
                     </div>

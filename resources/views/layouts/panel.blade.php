@@ -76,7 +76,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="/" class="brand-link" style="text-decoration: none">
-            <span class="brand-text font-weight-light">Öngel Güzellik</span>
+            <span class="brand-text font-weight-light">{{getenv('APP_NAME')}}</span>
         </a>
 
         <!-- Sidebar -->

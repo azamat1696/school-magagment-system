@@ -7,8 +7,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('sections.index')}}">Sınıflar</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('sections.create')}}">Sınıf oluştur</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('sections.index')}}">{{__('main.classes')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('sections.create')}}">{{__('main.create_class')}}</a></li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -22,7 +22,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Öğrenci Oluştur')}}</h3>
+                <h3 class="card-title">{{__('main.create_student')}}</h3>
             </div>
             <div class="card-body">
 

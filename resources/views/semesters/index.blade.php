@@ -6,9 +6,9 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h1 class="card-title"> <i class="fa fa-users"></i> {{__('Dönemler')}}</h1>
+                <h1 class="card-title"> <i class="fa fa-users"></i> {{__('main.semesters')}}</h1>
                 @role('Super-Admin')
-                <a href="{{route('semesters.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> Yeni</i></a>
+                <a href="{{route('semesters.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> {{__('main.new')}}</i></a>
                 @endrole
             </div>
             <div class="card-body">
@@ -26,10 +26,10 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Dönem Adı</th>
-                        <th>Akademik Senesi</th>
-                        <th>Statüsü</th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.semester_name')}}</th>
+                        <th>{{__('main.academic_year')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -43,19 +43,19 @@
                             <td>
 {{--                                                            <input type="checkbox" name="Statu" data-id="{{$year->id}}"   class="grid-switch-released">--}}
                                 @if($semester->status == 1)
-                                    <span class="badge badge-pill badge-success p-2">Açık</span>
+                                    <span class="badge badge-pill badge-success p-2">{{__('main.opened')}}</span>
                                 @else
-                                    <span class="badge badge-pill badge-danger p-2">Kapalı</span>
+                                    <span class="badge badge-pill badge-danger p-2">{{__('main.closed')}}</span>
                                 @endif
                             </td>
 
                             <td>
                                 <div style="display: flex;justify-content: space-around">
-                                    <a class="btn btn-primary" href="{{ route('semesters.edit',$semester->id) }}"><i class="nav-icon fas fa-edit"></i> Düzenle</a>
+                                    <a class="btn btn-primary" href="{{ route('semesters.edit',$semester->id) }}"><i class="nav-icon fas fa-edit"></i> {{__('main.edit')}}</a>
                                     <form action="{{ route('semesters.destroy',$semester->id) }}" method="POST" >
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"> <i class="nav-icon fas fa-trash"></i> Sil</button>
+                                        <button type="submit" class="btn btn-danger"> <i class="nav-icon fas fa-trash"></i>{{__('main.delete')}}</button>
                                     </form>
                                 </div>
                             </td>
@@ -65,10 +65,10 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Dönem Adı</th>
-                        <th>Akademik Senesi</th>
-                        <th>Statüsü</th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.semester_name')}}</th>
+                        <th>{{__('main.academic_year')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </tfoot>
                 </table>
