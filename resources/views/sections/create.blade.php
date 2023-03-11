@@ -7,8 +7,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('sections.index')}}">Sınıflar</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('sections.create')}}">Sınıf oluştur</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('sections.index')}}">{{__('main.classes')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('sections.create')}}">{{__('main.create_class')}}</a></li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -22,7 +22,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Sınıf Oluştur')}}</h3>
+                <h3 class="card-title">{{__('main.create_class')}}</h3>
             </div>
             <div class="card-body">
 
@@ -32,7 +32,7 @@
                         <div class="col-md-4">
                             @csrf
                             <div class="form-group">
-                                <label for="name">Sınıf Adı</label>
+                                <label for="name">{{__('main.class_name')}}</label>
 
                                 <div class="input-group">
 
@@ -51,7 +51,7 @@
                         <div class="col-md-4">
 
                             <div class="form-group">
-                                <label for="name">Açıklama</label>
+                                <label for="name">{{__('main.description')}}</label>
 
                                 <div class="input-group">
 
@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="section_no">Sınıf No</label>
+                                <label for="section_no">{{__('main.class_no')}}</label>
 
                                 <div class="input-group">
 
@@ -87,7 +87,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="theory_start_date">Teori ders başlama</label>
+                                <label for="theory_start_date">{{__('main.theory_start')}}</label>
 
                                 <div class="input-group">
 
@@ -105,7 +105,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="theory_end_date">Teori ders bitiş </label>
+                                <label for="theory_end_date">{{__('main.theory_end')}} </label>
 
                                 <div class="input-group">
 
@@ -123,7 +123,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="practice_start_date">Pratik ders başlama </label>
+                                <label for="practice_start_date">{{__('main.practice_start')}} </label>
 
                                 <div class="input-group">
 
@@ -141,7 +141,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="practice_end_date">Pratik ders bitiş </label>
+                                <label for="practice_end_date">{{__('main.practice_end')}}</label>
 
                                 <div class="input-group">
 
@@ -159,7 +159,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="ders_imza_end_date">Der imza bitiş </label>
+                                <label for="ders_imza_end_date">{{__('main.course_signature_end')}} </label>
 
                                 <div class="input-group">
 
@@ -178,7 +178,7 @@
                         <div class="col-md-4">
 
                             <div class="form-group">
-                                <label for="status">Status</label>
+                                <label for="status">{{__('main.status')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('status') is-invalid @enderror"   name="status" required>
@@ -198,7 +198,7 @@
                         <div class="col-md-4">
 
                             <div class="form-group">
-                                <label for="course_id">Ders Seçiniz</label>
+                                <label for="course_id">{{__('main.select_course')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('course_id') is-invalid @enderror"   name="course_id" required>
@@ -219,7 +219,7 @@
                         <div class="col-md-4">
 
                             <div class="form-group">
-                                <label for="instructor_user_id">Öğretmen Seçiniz</label>
+                                <label for="instructor_user_id">{{__('main.select_instructor')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('instructor_user_id') is-invalid @enderror"   name="instructor_user_id" required>
@@ -241,7 +241,7 @@
                     <div class="row float-right">
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Kaydet') }}
+                                {{ __('main.save') }}
                             </button>
                         </div>
                     </div>

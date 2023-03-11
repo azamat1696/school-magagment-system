@@ -7,7 +7,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('departments.index')}}">Bölümler</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('departments.index')}}">{{__('main.departments')}}</a></li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -21,9 +21,9 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h1 class="card-title"> <i class="fa fa-chalkboard pr-1"></i> {{__('Dersler')}}</h1>
+                <h1 class="card-title"> <i class="fa fa-chalkboard pr-1"></i> {{__('main.coureses')}}</h1>
                 @role('Super-Admin')
-                <a href="{{route('courses.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> Yeni</i></a>
+                <a href="{{route('courses.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> {{__('main.new')}}</i></a>
                 @endrole
             </div>
             <div class="card-body">
@@ -41,14 +41,14 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Ders Adı</th>
-                        <th>Ders Kodu</th>
-                        <th>Açıklama</th>
-                        <th>Bölüm Adı</th>
-                        <th>Status</th>
-                        <th>Güncelleme Tarihi </th>
-                        <th>Oluşturma Tarihi </th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.course_name')}}</th>
+                        <th>{{__('main.course_no')}}</th>
+                        <th>{{__('main.description')}}</th>
+                        <th>{{__('main.department_name')}}</th>
+                        <th>{{__('main.department_name')}}</th>
+                        <th>{{__('main.edited_date')}}</th>
+                        <th>{{__('main.created_date')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -71,11 +71,11 @@
                             <td>{{ date('Y-m-d',strtotime($item->updated_at))  }}</td>
                             <td>
                                 <div style="display: flex;justify-content: space-around">
-                                    <a class="btn btn-primary" href="{{ route('courses.edit',$item->id) }}"><i class="nav-icon fas fa-edit"></i> Düzenle</a>
+                                    <a class="btn btn-primary" href="{{ route('courses.edit',$item->id) }}"><i class="nav-icon fas fa-edit"></i> {{__('main.last_edited_user')}}</a>
                                     <form action="{{ route('courses.destroy',$item->id) }}" method="POST" >
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"> <i class="nav-icon fas fa-trash"></i> Sil</button>
+                                        <button type="submit" class="btn btn-danger"> <i class="nav-icon fas fa-trash"></i> {{__('main.delete')}}</button>
                                     </form>
                                 </div>
                             </td>
@@ -85,14 +85,14 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Ders Adı</th>
-                        <th>Ders Kodu</th>
-                        <th>Açıklama</th>
-                        <th>Bölüm Adı</th>
-                        <th>Status</th>
-                        <th>Güncelleme Tarihi </th>
-                        <th>Oluşturma Tarihi </th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.course_name')}}</th>
+                        <th>{{__('main.course_no')}}</th>
+                        <th>{{__('main.description')}}</th>
+                        <th>{{__('main.department_name')}}</th>
+                        <th>{{__('main.department_name')}}</th>
+                        <th>{{__('main.edited_date')}}</th>
+                        <th>{{__('main.created_date')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </tfoot>
                 </table>

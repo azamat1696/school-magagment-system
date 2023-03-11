@@ -7,7 +7,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('departments.index')}}">Bölümler</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('departments.index')}}">{{__('main.departments')}}</a></li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -21,9 +21,9 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h1 class="card-title"> <i class="fa fa-layer-group"></i> {{__('Bölümler')}}</h1>
+                <h1 class="card-title"> <i class="fa fa-layer-group"></i> {{__('main.departments')}}</h1>
                 @role('Super-Admin')
-                <a href="{{route('departments.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> Yeni</i></a>
+                <a href="{{route('departments.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> {{__('main.new')}}</i></a>
                 @endrole
             </div>
             <div class="card-body">
@@ -41,29 +41,29 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Bölüm Adı</th>
-                        <th>Açıklamas</th>
-                        <th>Bölüm No</th>
-                        <th>Ön Takı Harfi</th>
-                        <th>Status</th>
-                        <th>Güncelleme Tarihi </th>
-                        <th>Oluşturma Tarihi </th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.department_name')}}</th>
+                        <th>{{__('main.description')}}</th>
+                        <th>{{__('main.department_no')}}</th>
+                        <th>{{__('main.the_first_letter_of_the_department_name')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{__('main.edited_date')}}</th>
+                        <th>{{__('main.created_date')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($departments as $item)
                         <tr>
                             <td>{{$item->id}}</td>
-                            <td>{{$item->name }}</td>dxc
+                            <td>{{$item->name }}</td>
                             <td>{{$item->description }}</td>
                             <td>{{$item->department_no }}</td>
                             <td>{{$item->first_letter }}</td>
                             <td>
                                  @if($item->status == 1)
-                                    <span class="badge badge-pill badge-success p-2">Açık</span>
+                                    <span class="badge badge-pill badge-success p-2">{{__('main.opened')}}</span>
                                 @else
-                                    <span class="badge badge-pill badge-danger p-2">Kapalı</span>
+                                    <span class="badge badge-pill badge-danger p-2">{{__('main.closed')}}</span>
                                 @endif
                             </td>
                             <td>{{ date('Y-m-d',strtotime($item->created_at))}}</td>
@@ -71,11 +71,11 @@
 
                             <td>
                                 <div style="display: flex;justify-content: space-around">
-                                    <a class="btn btn-primary" href="{{ route('departments.edit',$item->id) }}"><i class="nav-icon fas fa-edit"></i> Düzenle</a>
+                                    <a class="btn btn-primary" href="{{ route('departments.edit',$item->id) }}"><i class="nav-icon fas fa-edit"></i> {{__('main.edit')}}</a>
                                     <form action="{{ route('departments.destroy',$item->id) }}" method="POST" >
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"> <i class="nav-icon fas fa-trash"></i> Sil</button>
+                                        <button type="submit" class="btn btn-danger"> <i class="nav-icon fas fa-trash"></i> {{__('main.delete')}}</button>
                                     </form>
                                 </div>
                             </td>
@@ -85,14 +85,14 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Bölüm Adı</th>
-                        <th>Açıklamas</th>
-                        <th>Bölüm No</th>
-                        <th>Ön Takı Harfi</th>
-                        <th>Status</th>
-                        <th>Güncelleme Tarihi </th>
-                        <th>Oluşturma Tarihi </th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.department_name')}}</th>
+                        <th>{{__('main.description')}}</th>
+                        <th>{{__('main.department_no')}}</th>
+                        <th>{{__('main.the_first_letter_of_the_department_name')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{__('main.edited_date')}}</th>
+                        <th>{{__('main.created_date')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </tfoot>
                 </table>

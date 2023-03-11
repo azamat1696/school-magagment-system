@@ -7,8 +7,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('students.index')}}">Sınıflar</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('students.create')}}">Sınıf oluştur</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('students.index')}}">{{__('main.students')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('students.create')}}">{{__('main.student_qualification_create')}}</a></li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -22,7 +22,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Öğrenci Bilgilerini Güncelle')}}</h3>
+                <h3 class="card-title">{{__('main.student_qualification_edit')}}</h3>
             </div>
             <div class="card-body">
 
@@ -36,7 +36,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="student_id">Öğrenci İsim & Soyismi</label>
+                                <label for="student_id">{{__('main.name_surname')}}</label>
 
                                 <div class="input-group">
                                     <input id="student_id" type="text" class="form-control @error('student_id') is-invalid @enderror"
@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="student_no">Öğrenci No</label>
+                                <label for="student_no">{{__('main.student_no')}}</label>
                                 <div class="input-group">
                                     <input id="student_no" type="text" class="form-control @error('student_no') is-invalid @enderror"
                                            name="student_no"
@@ -78,7 +78,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="departmnent_id">Kayıt Olacağı bölüm</label>
+                                <label for="departmnent_id">{{__('main.select_the_section_to_register')}}</label>
                                 <div class="input-group">
                                     <select  class="form-control @error('departmnent_id') is-invalid @enderror"   name="departmnent_id" required>
                                         @foreach($departments as $department)
@@ -98,7 +98,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="student_no">Bölüm İmza Bitiş Tarihi</label>
+                                <label for="student_no">{{__('main.department_signature_end')}}</label>
 
                                 <div class="input-group">
                                     <input
@@ -123,7 +123,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="islem_sira_no">İşlem Sıra No</label>
+                                <label for="islem_sira_no">{{__('main.que_number')}}</label>
 
                                 <div class="input-group">
                                     <input
@@ -146,7 +146,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="student_no">Mesleki yeterlilik başlama tarihi</label>
+                                <label for="student_no">{{__('main.meslekyeter_qualification_start_date')}}</label>
 
                                 <div class="input-group">
                                     <input
@@ -170,14 +170,14 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="student_status">Öğrenci öğrenim durumu</label>
+                                <label for="student_status">{{__('main.student_education_status')}}</label>
                                 <div class="input-group">
                                     <select  class="form-control @error('student_status') is-invalid @enderror"   name="student_status" required>
-                                        <option value="Aktif" {{$qualification->student_status == 'Aktif' ? 'selected' : ''}}>Aktif</option>
-                                        <option value="Pasif" {{$qualification->student_status == 'Pasif' ? 'selected' : ''}}>Pasif</option>
-                                        <option value="OnKayitli" {{$qualification->student_status == 'OnKayitli' ? 'selected' : ''}}>Ön Kayıtlı</option>
-                                        <option value="KaydiSilinmis" {{$qualification->student_status == 'KaydiSilinmis' ? 'selected' : ''}}>Kaydı Silinmiş</option>
-                                        <option value="KayitDondurma" {{$qualification->student_status == 'KayitDondurma' ? 'selected' : ''}}>Kayıt Dondurma</option>
+                                        <option value="Aktif" {{$qualification->student_status == 'Aktif' ? 'selected' : ''}}>{{__('main.active')}}</option>
+                                        <option value="Pasif" {{$qualification->student_status == 'Pasif' ? 'selected' : ''}}>{{__('main.passive')}}</option>
+                                        <option value="OnKayitli" {{$qualification->student_status == 'OnKayitli' ? 'selected' : ''}}>{{__('main.pre_registered')}}</option>
+                                        <option value="KaydiSilinmis" {{$qualification->student_status == 'KaydiSilinmis' ? 'selected' : ''}}>{{__('main.deleted_registeration')}}</option>
+                                        <option value="KayitDondurma" {{$qualification->student_status == 'KayitDondurma' ? 'selected' : ''}}>{{__('registretation_freezed')}}</option>
                                     </select>
                                     @error('student_status')
                                     <span class="invalid-feedback" role="alert">
@@ -192,12 +192,12 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="ogr_hakk">Öğrenci Hak</label>
+                                <label for="ogr_hakk">{{__('main.students_rights')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('ogr_hakk') is-invalid @enderror"   name="ogr_hakk" required>
-                                        <option value="HakkiVar" {{$qualification->ogr_hakk == 'HakkiVar' ? 'selected' : ''}}>Hakki Var</option>
-                                        <option value="HakkiYok" {{$qualification->ogr_hakk == 'HakkiYok' ? 'selected' : ''}}>Hakki Yok</option>
+                                        <option value="HakkiVar" {{$qualification->ogr_hakk == 'HakkiVar' ? 'selected' : ''}}>{{__('main.has_right')}}</option>
+                                        <option value="HakkiYok" {{$qualification->ogr_hakk == 'HakkiYok' ? 'selected' : ''}}>{{__('main.has_not_right')}}</option>
                                     </select>
                                     @error('ogr_hakk')
                                     <span class="invalid-feedback" role="alert">
@@ -212,7 +212,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="not_sistemi">Not sistemi</label>
+                                <label for="not_sistemi">{{__('main.grading_system')}}</label>
                                 <div class="input-group">
                                     <select  class="form-control @error('not_sistemi') is-invalid @enderror"   name="not_sistemi" >
                                         <option value="Deneme1">Deneme Not sistemi</option>
@@ -231,7 +231,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="ayrilma_tarihi"> Ayrılma Tarihi </label>
+                                <label for="ayrilma_tarihi"> {{__('main.leaving_date')}} </label>
 
                                 <div class="input-group">
 
@@ -259,7 +259,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="ayrilma_nedeni"> Ayrılma Nedeni </label>
+                                <label for="ayrilma_nedeni"> {{__('main.leaving_reason')}}</label>
 
                                 <div class="input-group">
 
@@ -285,7 +285,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="register_date"> Kayıt Tarihi </label>
+                                <label for="register_date"> {{__('main.register_date')}} </label>
 
                                 <div class="input-group">
 
@@ -313,13 +313,13 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="hazirlik_okudum">Hazırlık okudum </label>
+                                <label for="hazirlik_okudum">{{__('main.i_have_studied_preparation')}}</label>
 
                                 <div class="input-group">
 
                                     <select  class="form-control @error('hazirlik_okudum') is-invalid @enderror"   name="hazirlik_okudum" >
-                                        <option value="1" {{ $qualification->hazirlik_okudum == 1 ? 'selected' :'' }}>Okudum</option>
-                                        <option value="0" {{ $qualification->hazirlik_okudum == 0? 'selected' :'' }}>Okumadım</option>
+                                        <option value="1" {{ $qualification->hazirlik_okudum == 1 ? 'selected' :'' }}>{{__('main.studied')}}</option>
+                                        <option value="0" {{ $qualification->hazirlik_okudum == 0? 'selected' :'' }}>{{__('main.i_have_not_studied')}}</option>
                                     </select>
 
                                     @error('hazirlik_okudum')
@@ -336,7 +336,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="hazirlik_donem_sayi">Hazırlık dönem sayısı </label>
+                                <label for="hazirlik_donem_sayi">{{__('main.preparation_season_count')}}</label>
 
                                 <div class="input-group">
 
@@ -363,7 +363,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="giris_turu">Giriş Türü </label>
+                                <label for="giris_turu">{{__('main.register_type')}}</label>
 
                                 <div class="input-group">
 
@@ -386,7 +386,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="giris_puan_turu">Giriş Puan Türü</label>
+                                <label for="giris_puan_turu">{{__('main.entry_score_type')}}</label>
 
                                 <div class="input-group">
                                     <input
@@ -410,7 +410,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="giris_puan">Giriş Puan </label>
+                                <label for="giris_puan">{{__('main.entry_score')}} </label>
 
                                 <div class="input-group">
                                     <input
@@ -434,7 +434,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="genel_not_ortalama">Genel Not Ortalama</label>
+                                <label for="genel_not_ortalama">{{__('main.gpa')}}</label>
 
                                 <div class="input-group">
                                     <input
@@ -458,7 +458,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="diploma_tur">Diploma Türü </label>
+                                <label for="diploma_tur">{{__('main.diploma_type')}}</label>
 
                                 <div class="input-group">
 
@@ -480,7 +480,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="student_no">Diploma İstem Tarihi</label>
+                                <label for="student_no">{{__('main.diploma_request_date')}}</label>
 
                                 <div class="input-group">
                                     <input
@@ -504,7 +504,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="diplom_confirm_date">Diploma Onay Tarihi</label>
+                                <label for="diplom_confirm_date">{{__('main.diploma_confirm_date')}}</label>
 
                                 <div class="input-group">
                                     <input
@@ -528,7 +528,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="diplom_no">Diploma No</label>
+                                <label for="diplom_no">{{__('main.diploma_no')}}</label>
 
                                 <div class="input-group">
                                     <input
@@ -554,7 +554,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="diploma_not">Diploma Not</label>
+                                <label for="diploma_not">{{__('main.diploma_grade')}}</label>
 
                                 <div class="input-group">
                                     <input
@@ -579,7 +579,7 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label for="notes">Açıklama</label>
+                                <label for="notes">{{__('main.description')}}</label>
 
                                 <div class="input-group">
 
@@ -605,12 +605,12 @@
                         <div class="col-md-3">
 
                             <div class="form-group">
-                                <label>Status</label>
+                                <label>{{__('main.status')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('status') is-invalid @enderror"   name="status" required>
-                                        <option value="1" {{$qualification->status == 1 ? 'selected' : ''}}>Aktif</option>
-                                        <option value="0" {{$qualification->status == 0 ? 'selected' : ''}}>Pasif</option>
+                                        <option value="1" {{$qualification->status == 1 ? 'selected' : ''}}>{{__('main.active')}}</option>
+                                        <option value="0" {{$qualification->status == 0 ? 'selected' : ''}}>{{__('main.passive')}}</option>
                                     </select>
                                     @error('status')
                                     <span class="invalid-feedback" role="alert">
@@ -626,7 +626,7 @@
                     <div class="row float-right">
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Kaydet') }}
+                                {{ __('main.save') }}
                             </button>
                         </div>
                     </div>

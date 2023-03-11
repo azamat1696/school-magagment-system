@@ -6,7 +6,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Ülke Oluştur')}}</h3>
+                <h3 class="card-title">{{__('main.country_create')}}</h3>
             </div>
             <div class="card-body">
 
@@ -16,7 +16,7 @@
                         <div class="col-md-3">
                         @csrf
                             <div class="form-group">
-                                <label for="name">Ülke Adı</label>
+                                <label for="name">{{__('main.country_name')}}</label>
 
                                 <div class="input-group">
 
@@ -37,7 +37,7 @@
                     <div class="row float-right">
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Kaydet') }}
+                                {{ __('main.save') }}
                             </button>
                         </div>
                     </div>

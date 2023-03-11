@@ -6,7 +6,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Akademic Yıl Oluştur')}}</h3>
+                <h3 class="card-title">{{__('main.academic_year_create')}}</h3>
             </div>
             <div class="card-body">
 
@@ -16,7 +16,7 @@
                         <div class="col-md-3">
                         @csrf
                             <div class="form-group">
-                                <label >Başlama Tarihi</label>
+                                <label >{{__('main.start_date')}}</label>
 
                                 <div class="input-group">
 
@@ -35,7 +35,7 @@
                         <div class="col-md-3">
                             <!-- Date dd/mm/yyyy -->
                             <div class="form-group">
-                                <label>Bitiş Tarihi </label>
+                                <label>{{__('main.end_date')}}</label>
 
                                 <div class="input-group">
                                     <input id="BitisTarihi" type="date" class="form-control @error('BitisTarihi') is-invalid @enderror" name="BitisTarihi" value="{{ old('BitisTarihi') }}" required autocomplete="BitisTarihi">
@@ -80,7 +80,7 @@
                     <div class="row float-right">
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Kaydet') }}
+                                {{ __('main.save') }}
                             </button>
                         </div>
                     </div>

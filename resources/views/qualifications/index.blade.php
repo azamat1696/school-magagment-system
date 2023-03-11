@@ -21,9 +21,9 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h1 class="card-title"> <i class="fa fa-people-carry"></i> {{__('Öğrenciler Meslek Yeterlilik ')}}</h1>
+                <h1 class="card-title"> <i class="fa fa-people-carry"></i> {{__('main.student_qualification')}}</h1>
                 @role('Super-Admin')
-                <a href="{{route('qualifications.show')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> Yeni</i></a>
+                <a href="{{route('qualifications.show')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> {{__('main.new')}}</i></a>
                 @endrole
             </div>
             <div class="card-body">
@@ -41,26 +41,26 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Ad & Soyad </th>
-                        <th>Öğrenci No</th>
-                        <th>Öğrenci Statüsü</th>
-                        <th>MY No</th>
-                        <th>MY Başlangıç Tarih</th>
-                        <th>MY Bitiş İmza Tarih</th>
-                        <th>MY Diploma Talep Tarih</th>
-                        <th>MY Diploma Onay Tarih</th>
-                        <th>MY Diploma No</th>
-                        <th>İşlem Sıra No</th>
-                        <th>Öğrenci Hak</th>
-                        <th>Not Sistemi</th>
-                        <th>Ayrılma Tarihi</th>
-                        <th>Ayrılma Nedeni</th>
-                        <th>Kayıt Tarihi:</th>
-                        <th>Son düzenleyen kullanıcı:</th>
-                        <th>Düzenleme Tarihi:</th>
-                        <th>Oluşturma Tariihi:</th>
-                        <th>Statüsü</th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.name_surname')}} </th>
+                        <th>{{__('main.student_no')}}</th>
+                        <th>{{__('main.student_education_status')}}</th>
+                        <th>{{__('main.profession_qualification_transaction_no')}}</th>
+                        <th>{{__('main.qualification_start_date')}}</th>
+                        <th>{{__('main.qualification_end_sign_date')}}</th>
+                        <th>{{__('main.qualification_diploma_request_date')}}</th>
+                        <th>{{__('main.qualification_diploma_confirm_date')}}</th>
+                        <th>{{__('main.qualification_diploma_no')}}</th>
+                        <th>{{__('main.que_number')}}</th>
+                        <th>{{__('main.student_right')}}</th>
+                        <th>{{__('main.grading_system')}}</th>
+                        <th>{{__('main.leaving_date')}}</th>
+                        <th>{{__('main.leaving_reason')}}</th>
+                        <th>{{__('main.register_date')}}</th>
+                        <th>{{__('main.last_edited_user')}}</th>
+                        <th>{{__('main.edited_date')}}</th>
+                        <th>{{__('main.created_date')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -88,19 +88,19 @@
                             <td>{{$qualification->created_at}}</td>
                             <td>
                                 @if($qualification->status == 1)
-                                    <span class="badge badge-pill badge-success p-2">Açık</span>
+                                    <span class="badge badge-pill badge-success p-2">{{__('main.opened')}}</span>
                                 @else
-                                    <span class="badge badge-pill badge-danger p-2">Kapalı</span>
+                                    <span class="badge badge-pill badge-danger p-2">{{__('main.closed')}}</span>
                                 @endif
                             </td>
 
                             <td>
                                 <div style="display: flex;justify-content: space-around">
-                                    <a class="btn btn-primary" href="{{ route('qualifications.edit',$qualification->id) }}"><i class="nav-icon fas fa-edit"></i> Düzenle</a>
+                                    <a class="btn btn-primary" href="{{ route('qualifications.edit',$qualification->id) }}"><i class="nav-icon fas fa-edit"></i> {{__('main.edit')}}</a>
                                     <form action="{{ route('qualifications.destroy',$qualification->id) }}" method="POST" >
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"> <i class="nav-icon fas fa-trash"></i> Sil</button>
+                                        <button type="submit" class="btn btn-danger"> <i class="nav-icon fas fa-trash"></i> {{__('main.delete')}}</button>
                                     </form>
                                 </div>
                             </td>
@@ -110,26 +110,26 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Ad & Soyad </th>
-                        <th>Öğrenci No</th>
-                        <th>Öğrenci Statüsü</th>
-                        <th>MY No</th>
-                        <th>MY Başlangıç Tarih</th>
-                        <th>MY Bitiş İmza Tarih</th>
-                        <th>MY Diploma Talep Tarih</th>
-                        <th>MY Diploma Onay Tarih</th>
-                        <th>MY Diploma No</th>
-                        <th>İşlem Sıra No</th>
-                        <th>Öğrenci Hak</th>
-                        <th>Not Sistemi</th>
-                        <th>Ayrılma Tarihi</th>
-                        <th>Ayrılma Nedeni</th>
-                        <th>Kayıt Tarihi</th>
-                        <th>Son düzenleyen kullanıcı</th>
-                        <th>Düzenleme Tarihi</th>
-                        <th>Oluşturma Tariihi</th>
-                        <th>Statüsü</th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.name_surname')}} </th>
+                        <th>{{__('main.student_no')}}</th>
+                        <th>{{__('main.student_education_status')}}</th>
+                        <th>{{__('main.profession_qualification_transaction_no')}}</th>
+                        <th>{{__('main.qualification_start_date')}}</th>
+                        <th>{{__('main.qualification_end_sign_date')}}</th>
+                        <th>{{__('main.qualification_diploma_request_date')}}</th>
+                        <th>{{__('main.qualification_diploma_confirm_date')}}</th>
+                        <th>{{__('main.qualification_diploma_no')}}</th>
+                        <th>{{__('main.que_number')}}</th>
+                        <th>{{__('main.student_right')}}</th>
+                        <th>{{__('main.grading_system')}}</th>
+                        <th>{{__('main.leaving_date')}}</th>
+                        <th>{{__('main.leaving_reason')}}</th>
+                        <th>{{__('main.register_date')}}</th>
+                        <th>{{__('main.last_edited_user')}}</th>
+                        <th>{{__('main.edited_date')}}</th>
+                        <th>{{__('main.created_date')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </tfoot>
                 </table>

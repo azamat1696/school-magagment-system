@@ -6,7 +6,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Akademic Yıl Oluştur')}}</h3>
+                <h3 class="card-title">{{__('main.academic_year_edit')}}</h3>
             </div>
             <div class="card-body">
 
@@ -18,7 +18,7 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label for="BaslamaTarihi">Başlama Tarihi</label>
+                                <label for="BaslamaTarihi">{{__('main.start_date')}}</label>
 
                                 <div class="input-group">
 
@@ -37,7 +37,7 @@
                         <div class="col-md-3">
                             <!-- Date dd/mm/yyyy -->
                             <div class="form-group">
-                                <label for="BitisTarihi">Bitiş Tarihi </label>
+                                <label for="BitisTarihi">{{__('main.end_date')}} </label>
 
                                 <div class="input-group">
                                     <input id="BitisTarihi" type="date" class="form-control @error('BitisTarihi') is-invalid @enderror" name="BitisTarihi" value="{{ date('Y-m-d',strtotime($academicYear->BitisTarihi)) }}" required autocomplete="BitisTarihi">
@@ -55,7 +55,7 @@
                     <div class="row float-right">
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Kaydet') }}
+                                {{ __('main.save') }}
                             </button>
                         </div>
                     </div>

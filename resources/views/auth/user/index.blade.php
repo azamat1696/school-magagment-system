@@ -6,7 +6,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h1 class="card-title"> <i class="fa fa-users"></i> {{__('Kulanıcılar')}}</h1>
+                <h1 class="card-title"> <i class="fa fa-users"></i> {{__('main.users')}}</h1>
                @role('Super-Admin')
                 <a href="{{route('register')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"></i></a>
                 @endrole
@@ -21,14 +21,14 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Kullanıcı ismi</th>
-                        <th>E-posta</th>
-                        <th>Kullanıcı kodu</th>
-                        <th>Statü</th>
-                        <th>Telefon No</th>
-                        <th>Doğum Tarihi</th>
-                        <th>Kullanıcı rolü</th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.name')}}</th>
+                        <th>{{__('main.email')}}</th>
+                        <th>{{__('main.user_no')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{__('main.phone')}}</th>
+                        <th>{{__('main.birth_date')}}</th>
+                        <th>{{__('main.user_authority')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -42,9 +42,9 @@
 {{--                            <input type="checkbox" name="Statu" data-id="{{$user->id}}"   class="grid-switch-released">--}}
 
                         @if($user->Statu === 1)
-                                <span class="badge badge-pill badge-success p-2">Açık</span>
+                                <span class="badge badge-pill badge-success p-2">{{__('main.opened')}}</span>
                         @else
-                                <span class="badge badge-pill badge-danger p-2">Kapalı</span>
+                                <span class="badge badge-pill badge-danger p-2">{{__('main.closed')}}</span>
                         @endif
                         </td>
                         <td>{{$user->TelefonNo }}</td>
@@ -52,11 +52,11 @@
                         <td>{{$user->roles()->pluck('name')->implode(' ')}}</td>
                         <td>
                   <div style="display: flex;justify-content: space-around">
-                      <a class="btn btn-primary" href="{{ route('user.edit',$user->id) }}">Düzenle</a>
+                      <a class="btn btn-primary" href="{{ route('user.edit',$user->id) }}">{{__('main.edit')}}</a>
                       <form action="{{ route('user.destroy',$user->id) }}" method="POST" >
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-danger">Sil</button>
+                          <button type="submit" class="btn btn-danger">{{__('main.delete')}}</button>
                       </form>
                   </div>
                         </td>
@@ -66,14 +66,14 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Kullanıcı ismi</th>
-                        <th>E-posta</th>
-                        <th>Kullanıcı kodu</th>
-                        <th>Statü</th>
-                        <th>Telefon No</th>
-                        <th>Doğum Tarihi</th>
-                        <th>Kullanıcı rolü</th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.name')}}</th>
+                        <th>{{__('main.email')}}</th>
+                        <th>{{__('main.user_no')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{__('main.phone')}}</th>
+                        <th>{{__('main.birth_date')}}</th>
+                        <th>{{__('main.user_authority')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </tfoot>
                 </table>

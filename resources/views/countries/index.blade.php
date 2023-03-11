@@ -6,9 +6,9 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h1 class="card-title"> <i class="fa fa-globe"></i> {{__('Ülkeler')}}</h1>
+                <h1 class="card-title"> <i class="fa fa-globe"></i> {{__('main.countries')}}</h1>
                 @role('Super-Admin')
-                <a href="{{route('countries.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> Yeni</i></a>
+                <a href="{{route('countries.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> {{__('main.new')}}</i></a>
                 @endrole
             </div>
             <div class="card-body">
@@ -26,10 +26,10 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Ülke Adı</th>
-                        <th>Güncelleme Tarihi </th>
-                        <th>Oluşturma Tarihi </th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.country')}}</th>
+                        <th>{{__('main.edited_date')}}</th>
+                        <th>{{__('main.course_create')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -42,11 +42,11 @@
 
                             <td>
                                 <div style="display: flex;justify-content: space-around">
-                                    <a class="btn btn-primary" href="{{ route('countries.edit',$item->id) }}"><i class="nav-icon fas fa-edit"></i> Düzenle</a>
+                                    <a class="btn btn-primary" href="{{ route('countries.edit',$item->id) }}"><i class="nav-icon fas fa-edit"></i> {{__('main.edit')}}</a>
                                     <form action="{{ route('countries.destroy',$item->id) }}" method="POST" >
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"> <i class="nav-icon fas fa-trash"></i> Sil</button>
+                                        <button type="submit" class="btn btn-danger"> <i class="nav-icon fas fa-trash"></i> {{__('main.delete')}}</button>
                                     </form>
                                 </div>
                             </td>
@@ -56,10 +56,10 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Ülke Adı</th>
-                        <th>Güncelleme Tarihi </th>
-                        <th>Oluşturma Tarihi </th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.country')}}</th>
+                        <th>{{__('main.edited_date')}}</th>
+                        <th>{{__('main.course_create')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </tfoot>
                 </table>

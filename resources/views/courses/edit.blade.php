@@ -7,8 +7,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('departments.index')}}">Bölümler</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('departments.edit',$item->id)}}">Bölüm oluştur</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('courses.index')}}">{{__('main.courses')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('courses.edit',$item->id)}}">{{__('main.course_create')}}</a></li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -22,7 +22,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Ders Düzenle')}}</h3>
+                <h3 class="card-title">{{__('main.course_edit')}}</h3>
             </div>
             <div class="card-body">
 
@@ -34,7 +34,7 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label for="name">Ders Adı</label>
+                                <label for="name">{{__('main.course_name')}}</label>
 
                                 <div class="input-group">
 
@@ -53,7 +53,7 @@
                         <div class="col-md-4">
 
                             <div class="form-group">
-                                <label for="course_no">Ders No</label>
+                                <label for="course_no">{{__('main.course_no')}}</label>
 
                                 <div class="input-group">
 
@@ -72,7 +72,7 @@
                         <div class="col-md-4">
 
                             <div class="form-group">
-                                <label for="description">Ders Açıklaması</label>
+                                <label for="description">{{__('main.description')}}</label>
 
                                 <div class="input-group">
 
@@ -91,7 +91,7 @@
                         <div class="col-md-4">
 
                             <div class="form-group">
-                                <label>Bölüm Seçiniz</label>
+                                <label>{{__('main.select_department')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('department_id') is-invalid @enderror"   name="department_id" required>
@@ -113,12 +113,12 @@
                         <div class="col-md-4">
 
                             <div class="form-group">
-                                <label for="Status">Status</label>
+                                <label for="Status">{{__('main.status')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('status') is-invalid @enderror"   name="status" required>
-                                        <option value="1" {{$item->status == 1 ? 'selected':''}}>Aktif</option>
-                                        <option value="0" {{$item->status == 0 ? 'selected':''}}>Pasif</option>
+                                        <option value="1" {{$item->status == 1 ? 'selected':''}}>{{__('main.active')}}</option>
+                                        <option value="0" {{$item->status == 0 ? 'selected':''}}>{{__('main.passive')}}</option>
                                     </select>
                                     @error('status')
                                     <span class="invalid-feedback" role="alert">
@@ -135,7 +135,7 @@
                     <div class="row float-right">
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Kaydet') }}
+                                {{ __('main.save') }}
                             </button>
                         </div>
                     </div>

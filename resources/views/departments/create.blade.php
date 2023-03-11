@@ -7,8 +7,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('departments.index')}}">Bölümler</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('departments.create')}}">Bölüm oluştur</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('departments.index')}}">{{__('main.departments')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('departments.create')}}">{{__('main.department_create')}}</a></li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -22,7 +22,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Bölüm Oluştur')}}</h3>
+                <h3 class="card-title">{{__('main.department_create')}}</h3>
             </div>
             <div class="card-body">
 
@@ -32,7 +32,7 @@
                         <div class="col-md-4">
                         @csrf
                             <div class="form-group">
-                                <label for="name">Bölüm Adı</label>
+                                <label for="name">{{__('main.department_name')}}</label>
 
                                 <div class="input-group">
 
@@ -51,7 +51,7 @@
                         <div class="col-md-4">
 
                             <div class="form-group">
-                                <label for="name">Açıklama</label>
+                                <label for="name">{{__('main.description')}}</label>
 
                                 <div class="input-group">
 
@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="department_no">Bölüm No</label>
+                                <label for="department_no">{{__('main.department_no')}}</label>
 
                                 <div class="input-group">
 
@@ -88,12 +88,12 @@
                         <div class="col-md-4">
 
                             <div class="form-group">
-                                <label for="status">Status</label>
+                                <label for="status">{{__('main.status')}}</label>
 
                                 <div class="input-group">
                                     <select  class="form-control @error('status') is-invalid @enderror"   name="status" required>
-                                        <option value="1">Aktif</option>
-                                        <option value="0">Pasif</option>
+                                        <option value="1">{{__('main.active')}}</option>
+                                        <option value="0">{{__('main.passive')}}</option>
                                     </select>
                                     @error('status')
                                     <span class="invalid-feedback" role="alert">
@@ -108,7 +108,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="first_letter">Ön Takı Harfi</label>
+                                <label for="first_letter">{{__('main.the_first_letter_of_the_department_name')}}</label>
 
                                 <div class="input-group">
 
@@ -129,7 +129,7 @@
                     <div class="row float-right">
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Kaydet') }}
+                                {{ __('main.save') }}
                             </button>
                         </div>
                     </div>

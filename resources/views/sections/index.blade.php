@@ -21,9 +21,9 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h1 class="card-title"> <i class="fa fa-users"></i> {{__('Sınıflar ')}}</h1>
+                <h1 class="card-title"> <i class="fa fa-users"></i> {{__('main.courses')}}</h1>
                 @role('Super-Admin')
-                <a href="{{route('sections.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> {{__('main.mew')}}</i></a>
+                <a href="{{route('sections.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> {{__('main.new')}}</i></a>
                 @endrole
             </div>
             <div class="card-body">
@@ -74,20 +74,20 @@
                             <td>{{$section->user->name}}</td>
                              <td>
                                  @if($section->status == 1)
-                                    <span class="badge badge-pill badge-success p-2">Açık</span>
+                                    <span class="badge badge-pill badge-success p-2">{{__('main.opened')}}</span>
                                 @else
-                                    <span class="badge badge-pill badge-danger p-2">Kapalı</span>
+                                    <span class="badge badge-pill badge-danger p-2">{{__('main.closed')}}</span>
                                 @endif
                             </td>
                             <td>{{date('Y-m-d',strtotime($section->created_at ))}}</td>
                             <td>{{date('Y-m-d',strtotime($section->updated_at ))}}</td>
                             <td>
                                 <div style="display: flex;justify-content: space-around">
-                                    <a class="btn btn-primary" href="{{ route('sections.edit',$section->id) }}">Düzenle</a>
+                                    <a class="btn btn-primary" href="{{ route('sections.edit',$section->id) }}">{{__('main.edit')}}</a>
                                     <form action="{{ route('sections.destroy',$section->id) }}" method="POST" >
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Sil</button>
+                                        <button type="submit" class="btn btn-danger">{{__('main.delete')}}</button>
                                     </form>
                                 </div>
                             </td>

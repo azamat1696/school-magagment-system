@@ -6,9 +6,9 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h1 class="card-title"> <i class="fa fa-users"></i> {{__('Akademik seneler')}}</h1>
+                <h1 class="card-title"> <i class="fa fa-users"></i> {{__('main.academic_year')}}</h1>
                 @role('Super-Admin')
-                <a href="{{route('academic-year.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> Yeni</i></a>
+                <a href="{{route('academic-year.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> {{__('main.new')}}</i></a>
                 @endrole
             </div>
             <div class="card-body">
@@ -26,10 +26,10 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Başlangıç Tarihi</th>
-                        <th>Bitiş Tarihi</th>
-                        <th>Statüsü</th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.start_date')}}</th>
+                        <th>{{__('main.end_date')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -41,19 +41,19 @@
                             <td>
 {{--                                                            <input type="checkbox" name="Statu" data-id="{{$year->id}}"   class="grid-switch-released">--}}
                                 @if($year->Statu === 1)
-                                    <span class="badge badge-pill badge-success p-2">Açık</span>
+                                    <span class="badge badge-pill badge-success p-2">{{__('main.opened')}}</span>
                                 @else
-                                    <span class="badge badge-pill badge-danger p-2">Kapalı</span>
+                                    <span class="badge badge-pill badge-danger p-2">{{__('main.closed')}}</span>
                                 @endif
                             </td>
 
                             <td>
                                 <div style="display: flex;justify-content: space-around">
-                                    <a class="btn btn-primary" href="{{ route('academic-year.edit',$year->id) }}">Düzenle</a>
+                                    <a class="btn btn-primary" href="{{ route('academic-year.edit',$year->id) }}">{{__('main.edit')}}</a>
                                     <form action="{{ route('academic-year.destroy',$year->id) }}" method="POST" >
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Sil</button>
+                                        <button type="submit" class="btn btn-danger">{{__('main.delete')}}</button>
                                     </form>
                                 </div>
                             </td>
@@ -63,10 +63,10 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Başlangıç Tarihi</th>
-                        <th>Bitiş Tarihi</th>
-                        <th>Statüsü</th>
-                        <th>Aksiyonlar</th>
+                        <th>{{__('main.start_date')}}</th>
+                        <th>{{__('main.end_date')}}</th>
+                        <th>{{__('main.status')}}</th>
+                        <th>{{__('main.actions')}}</th>
                     </tr>
                     </tfoot>
                 </table>

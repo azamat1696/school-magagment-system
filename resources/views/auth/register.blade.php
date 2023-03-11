@@ -6,7 +6,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Kulanıcılar Oluştur')}}</h3>
+                <h3 class="card-title">{{__('main.user_create')}}</h3>
             </div>
             <div class="card-body">
 
@@ -17,7 +17,7 @@
                         @csrf
                             <!-- phone mask -->
                        <div class="form-group">
-                                <label >İsim</label>
+                                <label >{{__('main.name')}}</label>
 
                                 <div class="input-group">
 {{--                                    <div class="input-group-prepend">--}}
@@ -39,7 +39,7 @@
                          <div class="col-md-3">
                             <!-- Date dd/mm/yyyy -->
                             <div class="form-group">
-                                <label> E-posta </label>
+                                <label>{{__('main.email')}} </label>
 
                                 <div class="input-group">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -58,7 +58,7 @@
                          <div class="col-md-3">
                                 <!-- Date dd/mm/yyyy -->
                                 <div class="form-group">
-                                    <label> Şifre </label>
+                                    <label> {{__('main.password')}} </label>
 
                                     <div class="input-group">
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" value="{{old('password')}}" name="password" required autocomplete="new-password">
@@ -77,7 +77,7 @@
                          <div class="col-md-3">
                                 <!-- Date dd/mm/yyyy -->
                                 <div class="form-group">
-                                    <label> Yeniden Şifreyi giriniz </label>
+                                    <label> {{__('main.password_confirmation')}} </label>
 
                                     <div class="input-group">
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{old('password_confirmation')}}" required autocomplete="new-password">
@@ -92,7 +92,7 @@
                             <div class="col-md-3">
                                 <!-- Date dd/mm/yyyy -->
                                 <div class="form-group">
-                                    <label for="KullaniciKodu"> Kullanıcı Kodu </label>
+                                    <label for="KullaniciKodu"> {{__('main.user_no')}} </label>
 
                                     <div class="input-group">
                                         <input id="KullaniciKodu" type="text" class="form-control @error('KullaniciKodu') is-invalid @enderror" value="{{old('KullaniciKodu')}}" name="KullaniciKodu" required autocomplete="KullaniciKodu">
@@ -111,7 +111,7 @@
                             <div class="col-md-3">
                                 <!-- Date dd/mm/yyyy -->
                                 <div class="form-group">
-                                    <label for="TelefonNo"> Telefon Numara </label>
+                                    <label for="TelefonNo"> {{__('main.phone')}} </label>
 
                                     <div class="input-group">
                                         <input id="TelefonNo" type="text" class="form-control @error('TelefonNo') is-invalid @enderror" value="{{old('TelefonNo')}}" name="TelefonNo" required autocomplete="TelefonNo">
@@ -130,7 +130,7 @@
                             <div class="col-md-3">
                                 <!-- Date dd/mm/yyyy -->
                                 <div class="form-group">
-                                    <label for="Adres"> Adres </label>
+                                    <label for="Adres"> {{__('main.address')}} </label>
 
                                     <div class="input-group">
                                         <input id="Adres" type="text" class="form-control @error('Adres') is-invalid @enderror" name="Adres" value="{{old('Adres')}}"  required autocomplete="Adres">
@@ -150,7 +150,7 @@
                             <div class="col-md-3">
                                 <!-- Date dd/mm/yyyy -->
                                 <div class="form-group">
-                                    <label> Kullanıcı Yetkisi </label>
+                                    <label> {{__('main.user_authority')}} </label>
 
                                     <div class="input-group">
                                          <select  class="form-control @error('KullaniciTipi') is-invalid @enderror"   name="KullaniciTipi" required>
@@ -170,12 +170,12 @@
                             <div class="col-md-3">
                                 <!-- Date dd/mm/yyyy -->
                                 <div class="form-group">
-                                    <label for="Cinsiyet"> Cinsiyet </label>
+                                    <label for="Cinsiyet"> {{__('main.gender')}} </label>
 
                                     <div class="input-group">
                                         <select name="Cinsiyet" id="Cinsiyet" class="form-control @error('password') is-invalid @enderror" required>
-                                            <option value="Erkek">Erkek</option>
-                                            <option value="Kadin">Kadın</option>
+                                            <option value="Erkek">{{__('main.male')}}</option>
+                                            <option value="Kadin">{{__('main.female')}}</option>
                                         </select>
                                         @error('Cinsiyet')
                                         <span class="invalid-feedback" role="alert">
@@ -192,11 +192,11 @@
                             <div class="col-md-3">
                                 <!-- Date dd/mm/yyyy -->
                                 <div class="form-group">
-                                    <label> Doğum Tarihi </label>
+                                    <label> {{__('main.birth_date')}}</label>
 
                                     <div class="input-group">
 
-                                        <input type="date" id="DogumTarihi" class="form-control @error('password') is-invalid @enderror"    name="DogumTarihi"  data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy"  required  data-mask autocomplete="DogumTarihi">
+                                        <input type="date" id="DogumTarihi" class="form-control @error('DogumTarihi') is-invalid @enderror"    name="DogumTarihi"  data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy"  required  data-mask autocomplete="DogumTarihi">
 
                                         @error('DogumTarihi')
                                         <span class="invalid-feedback" role="alert">
@@ -212,7 +212,7 @@
 
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="ProfilResim"> Profil Resmi </label>
+                                    <label for="ProfilResim"> {{__('main.profile_image')}}</label>
 
                                     <div class="input-group">
                                         <input id="ProfilResim"   type="file" class="form-control @error('ProfilResim')   is-invalid @enderror" name="ProfilResim">
@@ -230,7 +230,7 @@
                         <div class="row float-right">
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Kaydet') }}
+                                    {{ __('main.save') }}
                                 </button>
                             </div>
                         </div>
