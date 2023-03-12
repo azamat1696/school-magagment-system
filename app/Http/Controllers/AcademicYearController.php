@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AcademicYear;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AcademicYearController extends Controller
 {
@@ -15,6 +16,7 @@ class AcademicYearController extends Controller
     public function index()
     {
         $years = AcademicYear::all();
+        Log::channel('info')->info('User is accessing all the  Academic Year', ['user' => auth()->user()->id,'controller' => 'AcademicYearController@index']);
         return view('academic-year.index',compact('years'));
     }
 
@@ -25,6 +27,7 @@ class AcademicYearController extends Controller
      */
     public function create()
     {
+        Log::channel('info')->info('User is  trying   create  Academic Year', ['user' => auth()->user()->id,'controller' => 'AcademicYearController@create']);
         return view('academic-year.create');
     }
 
@@ -40,8 +43,9 @@ class AcademicYearController extends Controller
             'BaslamaTarihi' => 'required|date',
             'BitisTarihi' => 'required||date'
         ]);
-        AcademicYear::create($validated);
-        return redirect()->route('academic-year.index')->with('success','Akademik yıl başarıyla eklendi');
+        $academic = AcademicYear::create($validated);
+        Log::channel('info')->info('User    created  Academic Year', ['user' => auth()->user()->id,'controller' => 'AcademicYearController@store','academic' => $academic]);
+        return redirect()->route('academic-year.index')->with('success',__('main.academic_year_created_with_success'));
     }
 
     /**
@@ -65,6 +69,7 @@ class AcademicYearController extends Controller
     {
 
          $academicYear = AcademicYear::find($id);
+        Log::channel('info')->info('User is  trying   edit  Academic Year', ['user' => auth()->user()->id,'controller' => 'AcademicYearController@edit','academicYear' => $academicYear]);
         return view('academic-year.edit',compact('academicYear'));
     }
 
@@ -83,7 +88,8 @@ class AcademicYearController extends Controller
         ]);
         $academicYear = AcademicYear::find($id);
         $academicYear->update($validated);
-        return redirect()->route('academic-year.index')->with('success','Akademik yıl başarıyla güncenlendi');
+        Log::channel('info')->info('User  updated  Academic Year', ['user' => auth()->user()->id,'controller' => 'AcademicYearController@update','academicYear' => $academicYear]);
+        return redirect()->route('academic-year.index')->with('success',__('main.academic_year_updated_with_success'));
     }
 
     /**
@@ -95,9 +101,10 @@ class AcademicYearController extends Controller
     public function destroy($id)
     {
 
-        $user = AcademicYear::find($id);
-        $user->delete();
+        $academicYear = AcademicYear::find($id);
+        $academicYear->delete();
+        Log::channel('info')->info('User  deleted  Academic Year', ['user' => auth()->user()->id,'controller' => 'AcademicYearController@destroy','academicYear' => $academicYear]);
         return redirect()->route('academic-year.index')
-               ->with('success','Akademik yıl başarıyla silindi');
+               ->with('success', __('main.academic_year_deleted_with_success'));
     }
 }

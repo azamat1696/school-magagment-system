@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CoursesController extends Controller
 {
@@ -16,6 +17,7 @@ class CoursesController extends Controller
     public function index()
     {
         $items = Course::with('department')->get();
+        Log::channel('info')->info('User is accessing all the Courses', ['user' => auth()->user()->id,'controller' => 'CoursesController@index']);
         return view('courses.index',compact('items'));
     }
 
@@ -27,6 +29,7 @@ class CoursesController extends Controller
     public function create()
     {
         $items = Department::all();
+        Log::channel('info')->info('User is trying to create a Course', ['user' => auth()->user()->id,'controller' => 'CoursesController@create']);
        return view('courses.create',compact('items'));
     }
 
@@ -46,8 +49,9 @@ class CoursesController extends Controller
            'department_id' => 'required',
            'status' => 'required',
         ]);
-        Course::create($validated);
-        return redirect()->route('courses.index')->with('success','Ders başarıyla oluşturuldu');
+       $course = Course::create($validated);
+       Log::channel('info')->info('User created a Course', ['user' => auth()->user()->id,'controller' => 'CoursesController@store','data' => $course]);
+        return redirect()->route('courses.index')->with('success',__('main.course_created_with_success'));
     }
 
     /**
@@ -60,6 +64,7 @@ class CoursesController extends Controller
     {
         $item = Course::find($id);
         $departments = Department::all();
+        Log::channel('info')->info('User is trying to edit a Course', ['user' => auth()->user()->id,'controller' => 'CoursesController@edit','data' => $item]);
         return view('courses.edit',compact('item','departments'));
     }
 
@@ -81,7 +86,8 @@ class CoursesController extends Controller
         ]);
         $item = Course::find($id);
         $item->update($validated);
-        return redirect()->route('courses.index')->with('success','Ders başarıyla güncellendi');
+        Log::channel('info')->info('User updated a Course', ['user' => auth()->user()->id,'controller' => 'CoursesController@update','data' => $item]);
+        return redirect()->route('courses.index')->with('success',__('main.course_updated_with_success'));
 
     }
 
@@ -94,7 +100,8 @@ class CoursesController extends Controller
     public function destroy($id)
     {
         Course::destroy($id);
-         return redirect()->route('courses.index')->with('success','Ders başarıyla silindi');
+        Log::channel('warning')->warning('User deleted a Course', ['user' => auth()->user()->id,'controller' => 'CoursesController@destroy','data' => $id]);
+         return redirect()->route('courses.index')->with('success', __('main.course_deleted_with_success'));
 
     }
 }

@@ -51,8 +51,7 @@ class Qualification extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
-        'student_id' => 'integer',
+         'student_id' => 'integer',
         'qualification_start_date' => 'date',
         'departmnent_id' => 'integer',
         'ic_denetim_tarih' => 'datetime',

@@ -176,4 +176,33 @@ return [
     'forgot_your_password' => 'Şifrenizi mi unuttunuz?',
 
 
+    'student_with_success_deleted' => 'Öğrenci MY başarıyla silindi',
+    'with_success_updated' => ' başarıyla güncellendi',
+    'qualification_created_with_success' => 'Mesleki Yeterlilik başarıyla oluşturuldu',
+    'qualification_updated_with_success' => 'Mesleki Yeterlilik başarıyla güncellendi',
+    'qualification_deleted_with_success' => 'Mesleki Yeterlilik başarıyla silindi',
+    'student_deleted_with_success' => 'Öğrenci başarıyla silindi',
+    'academic_semester_registeration_updated_with_success' => 'Akademik Yıl & Dönem Kayıt başarıyla güncellendi',
+    'semester_updated_with_success' => 'Dönem başarıyla güncellendi',
+    'semester_deleted_with_success' => 'Dönem başarıyla silindi',
+    'department_created_with_success' => 'Bölüm başarıyla oluşturuldu',
+    'department_updated_with_success' => 'Bölüm başarıyla güncellendi',
+    'department_deleted_with_success' => 'Bölüm başarıyla silindi',
+    'course_created_with_success' => 'Ders başarıyla oluşturuldu',
+    'course_updated_with_success' => 'Ders başarıyla güncellendi',
+    'course_deleted_with_success' => 'Ders başarıyla silindi',
+    'country_created_with_success' => 'Ülke başarıyla oluşturuldu',
+    'country_updated_with_success' => 'Ülke başarıyla güncellendi',
+    'country_deleted_with_success' => 'Ülke başarıyla silindi',
+    'class_created_with_success' => 'Sınıf başarıyla oluşturuldu',
+    'class_updated_with_success' => 'Sınıf başarıyla güncellendi',
+    'class_deleted_with_success' => 'Sınıf başarıyla silindi',
+    'academic_year_created_with_success' => 'Akademik Yıl başarıyla oluşturuldu',
+    'academic_year_updated_with_success' => 'Akademik Yıl başarıyla güncellendi',
+    'academic_year_deleted_with_success' => 'Akademik Yıl başarıyla silindi',
+    'user_created_with_success' => 'Kullanıcı başarıyla oluşturuldu',
+    'user_updated_with_success' => 'Kullanıcı başarıyla güncellendi',
+    'user_deleted_with_success' => 'Kullanıcı başarıyla silindi',
+
+
  ];

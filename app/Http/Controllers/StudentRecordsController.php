@@ -10,6 +10,8 @@ use App\Models\Semester;
 use App\Models\Student;
 use App\Models\StudentRecord;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Spatie\Permission\Models\Role;
 
 class StudentRecordsController extends Controller
 {
@@ -22,6 +24,7 @@ class StudentRecordsController extends Controller
     public function index()
     {
         $studentRecords = StudentRecord::with('academicYear')->with('semester')->with('student')->with('user')->get();
+        Log::channel('info')->info('User is accessing all the student records', ['user' => auth()->user()->id]);
         return view('student-records.index',compact('studentRecords'));
     }
 
@@ -35,6 +38,7 @@ class StudentRecordsController extends Controller
         $student = Student::find($id);
         $academicYears= AcademicYear::where('status',1)->get();
         $semesters = Semester::where('status',1)->get();
+        Log::channel('info')->info('User is trying to create a student record', ['user' => auth()->user()->id]);
         return view('student-records.create',compact('student','academicYears','semesters'));
     }
 
@@ -55,6 +59,7 @@ class StudentRecordsController extends Controller
         ]);
 
         StudentRecord::create(['user_id'=>auth()->user()->id]+$validator);
+        Log::channel('info')->warning('User  created a student record', ['user' => auth()->user()->id .' '.auth()->user()->name, 'student record'=>$validator]);
         return redirect()->route('student-records.index')->with('success','Öğrenci Yıl & Dönem kaydı başarıyla oluşturuldu');
     }
 
@@ -70,6 +75,7 @@ class StudentRecordsController extends Controller
         $students = Student::where('status',1)->get();
         $academicYears= AcademicYear::where('status',1)->get();
         $semesters = Semester::where('status',1)->get();
+        Log::channel('info')->info('User is trying to create a student record', ['user' => auth()->user()->id]);
         return view('student-records.show',compact('students','academicYears','semesters'));
     }
 
@@ -85,6 +91,7 @@ class StudentRecordsController extends Controller
         $students = Student::where('status',1)->get();
         $academicYears= AcademicYear::where('status',1)->get();
         $semesters = Semester::where('status',1)->get();
+        Log::channel('info')->info('User is trying to edit a student record', ['user' => auth()->user()->id, 'data'=>$studentRecord]);
         return view('student-records.edit',compact('students','academicYears','semesters','studentRecord'));
     }
 
@@ -106,7 +113,8 @@ class StudentRecordsController extends Controller
 
         $studentRecord = StudentRecord::find($id);
         $studentRecord->update(['user_id' => auth()->user()->id]+$validator);
-        return redirect()->route('student-records.index')->with('success','Öğrenci Akademnik ve Dönem Kaydı başarıyla güncenlendi');
+        Log::channel('info')->warning('User  updated a student record', ['user' => auth()->user()->id .' '.auth()->user()->name, 'data'=>$validator]);
+        return redirect()->route('student-records.index')->with('success',__('main.academic_semester_registeration_updated_with_success'));
     }
 
     /**
@@ -121,6 +129,7 @@ class StudentRecordsController extends Controller
         $studentRecord = StudentRecord::find($id);
 
         $studentRecord->delete();
+        Log::channel('info')->warning('User  deleted a student record', ['user' => auth()->user()->id .' '.auth()->user()->name, 'data'=>$studentRecord]);
         return redirect()->route('student-records.index')
             ->with('success','Öğrenci Akademnik ve Dönem Kaydı başarıyla silindi');
     }

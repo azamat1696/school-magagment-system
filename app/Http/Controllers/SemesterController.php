@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AcademicYear;
 use App\Models\Semester;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class SemesterController extends Controller
 {
@@ -16,7 +17,7 @@ class SemesterController extends Controller
     public function index()
     {
         $semesters = Semester::with('academic_years')->get();
-
+        Log::channel('info')->info('User  is accessing all the semester records ',['user'=> auth()->user(), 'SemesterController@index' => $semesters]);
         return view('semesters.index',compact('semesters'));
     }
 
@@ -28,7 +29,7 @@ class SemesterController extends Controller
     public function create()
     {
         $years = AcademicYear::where('status',true)->get();
-
+        Log::channel('info')->info('User trying to create Semester ',['user'=> auth()->user(), 'controller' => 'SemesterController@create' ]);
         return view('semesters.create',compact('years'));
     }
 
@@ -48,7 +49,8 @@ class SemesterController extends Controller
         ]);
 
 
-        Semester::create($validated);
+         $data = Semester::create($validated);
+        Log::channel('info')->info('User created Semester ',['user'=> auth()->user(), 'controller' => 'SemesterController@store', 'data' => $data ]);
          return redirect()->route('semesters.index')->with('success','Dönem başarıyla eklendi');
     }
 
@@ -64,6 +66,7 @@ class SemesterController extends Controller
 
         $semesters = Semester::with('academic_years')->find($id);
         $years = AcademicYear::where('status',true)->get();
+        Log::channel('info')->info('User trying to edit Semester ',['user'=> auth()->user(), 'controller' => 'SemesterController@edit', 'data' => $semesters ]);
         return view('semesters.edit',compact('semesters','years'));
     }
 
@@ -85,7 +88,8 @@ class SemesterController extends Controller
 
         $semesters = Semester::find($id);
         $semesters->update($validated);
-        return redirect()->route('semesters.index')->with('success','Dönem başarıyla güncenlendi');
+        Log::channel('info')->info('User updated Semester ',['user'=> auth()->user(), 'controller' => 'SemesterController@update', 'data' => $semesters ]);
+        return redirect()->route('semesters.index')->with('success',__('main.semester_updated_with_success'));
     }
 
     /**
@@ -97,9 +101,10 @@ class SemesterController extends Controller
     public function destroy($id)
     {
 
-        $user = Semester::find($id);
-        $user->delete();
+        $semester = Semester::find($id);
+        $semester->delete();
+        Log::channel('info')->info('User deleted Semester ',['user'=> auth()->user(), 'controller' => 'SemesterController@destroy', 'data' => $semester ]);
         return redirect()->route('semesters.index')
-            ->with('success','Dönem başarıyla silindi');
+            ->with('success',__('main.semester_deleted_with_success'));
     }
 }

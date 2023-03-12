@@ -23,7 +23,7 @@
             <div class="card-header">
                 <h1 class="card-title"> <i class="fa fa-people-carry"></i> {{__('main.students')}}</h1>
                 @role('Super-Admin')
-                <a href="{{route('students.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> {{__('new')}}</i></a>
+                <a href="{{route('students.create')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> {{__('main.new')}}</i></a>
                 @endrole
             </div>
             <div class="card-body">
