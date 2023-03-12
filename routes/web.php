@@ -15,8 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('lang/home', [LangController::class, 'index']);
+Route::get('lang/home', [LangController::class, 'index'])->middleware('auth');
 
 Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
 Route::prefix('/users')->group(function (){

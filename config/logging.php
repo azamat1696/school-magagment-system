@@ -115,7 +115,46 @@ return [
         ],
 
         'emergency' => [
-            'path' => storage_path('logs/laravel.log'),
+            'driver' => 'single',
+            'path' => storage_path('logs/emergency.log'),
+            'level' => 'alert',
+            'days' => 30,
+        ],
+        'alert' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/alert.log'),
+            'level' => 'alert',
+            'days' => 30,
+        ],
+        'critical' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/critical.log'),
+            'level' =>  'critical',
+            'days' => 30,
+        ],
+        'warning' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/warning.log'),
+            'level' => 'warning',
+            'days' => 30,
+        ],
+        'notice' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/notice.log'),
+            'level' =>  'notice',
+            'days' => 30,
+        ],
+        'error' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/error.log'),
+            'level' => 'error',
+            'days' => 30,
+        ],
+        'info' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/info.log'),
+            'level' => 'info',
+            'days' => 30,
         ],
     ],
 

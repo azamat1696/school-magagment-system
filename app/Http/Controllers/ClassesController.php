@@ -6,11 +6,14 @@ use App\Models\Course;
 use App\Models\Section;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ClassesController extends Controller
 {
    public function index(){
        $sections = Section::with('course')->with('instructorUser')->with('icDenetimUser')->with('user')->get();
+       Log::channel('info')->info('User is accessing all the Section', ['user' => auth()->user()->id,'controller' => 'ClassesController@index']);
+
        return view('sections.index',compact('sections'));
    }
 
@@ -23,6 +26,7 @@ class ClassesController extends Controller
     {
         $items = Course::all();
         $instructors = User::where('KullaniciTipi','Teacher')->get();
+        Log::channel('info')->info('User is  trying   create  Section', ['user' => auth()->user()->id,'controller' => 'ClassesController@create']);
         return view('sections.create',compact('items','instructors'));
     }
 
@@ -48,8 +52,9 @@ class ClassesController extends Controller
             'ders_imza_end_date' => 'required',
             'status' => 'required',
         ]);
-        Section::create(['user_id'=>auth()->user()->id]+$validated);
-        return redirect()->route('sections.index')->with('success','Sınıf başarıyla oluşturuldu');
+         $section = Section::create(['user_id'=>auth()->user()->id]+$validated);
+        Log::channel('info')->info('User is  trying   create  Section', ['user' => auth()->user()->id,'controller' => 'ClassesController@store','section' => $section]);
+        return redirect()->route('sections.index')->with('success', __('main.section_created_with_success'));
     }
 
     /**
@@ -63,6 +68,7 @@ class ClassesController extends Controller
         $section = Section::find($id);
         $courses = Course::all();
         $instructors = User::where('KullaniciTipi','Teacher')->get();
+        Log::channel('info')->info('User is  trying   edit  Section', ['user' => auth()->user()->id,'controller' => 'ClassesController@edit','section' => $section]);
         return view('sections.edit',compact('courses','instructors','section'));
     }
 
@@ -91,7 +97,8 @@ class ClassesController extends Controller
 
         $item = Section::find($id);
         $item->update(['user_id'=>auth()->user()->id]+$validated);
-        return redirect()->route('sections.index')->with('success','Sınıf başarıyla güncellendi');
+        Log::channel('info')->info('User is  trying   update  Section', ['user' => auth()->user()->id,'controller' => 'ClassesController@update','section' => $item]);
+        return redirect()->route('sections.index')->with('success',__('main.class_updated_with_success'));
 
     }
 
@@ -104,7 +111,8 @@ class ClassesController extends Controller
     public function destroy($id)
     {
         Section::destroy($id);
-        return redirect()->route('sections.index')->with('success','Sınıf başarıyla silindi');
+        Log::channel('info')->info('User is  trying   delete  Section', ['user' => auth()->user()->id,'controller' => 'ClassesController@destroy','section' => $id]);
+        return redirect()->route('sections.index')->with('success',__('main.class_deleted_with_success'));
 
     }
 }

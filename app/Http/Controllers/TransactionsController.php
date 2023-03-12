@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\QualificationRequest;
 use App\Http\Requests\TransactionsRequest;
 use App\Models\Department;
 use App\Models\Qualification;
 use App\Models\Semester;
 use App\Models\Student;
 use App\Models\Transaction;
-use Illuminate\Http\Request;
-
+ use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 class TransactionsController extends Controller
 {
 
@@ -22,6 +21,7 @@ class TransactionsController extends Controller
     public function index()
     {
         $transactions = Transaction::with('student')->with('user')->with('department')->with('qualification')->with('semester')->get();
+        Log::channel('info')->info('User is accessing all the transactions', ['user' => Auth::user()->id]);
         return view('transactions.index',compact('transactions'));
     }
 
@@ -32,6 +32,7 @@ class TransactionsController extends Controller
      */
     public function create($id)
     {
+        Log::channel('info')->info('User is trying to create a transaction', ['user' => Auth::user()->id]);
         $student = Student::with('qualification')->find($id);
         $departments = Department::all();
         $semesters = Semester::all();
@@ -48,7 +49,8 @@ class TransactionsController extends Controller
     {
 
         Transaction::create(['user_id'=>auth()->user()->id]+$request->validated());
-        return redirect()->route('transactions.index')->with('success','Mesleki Yeterlilik başarıyla oluşturuldu');
+        Log::channel('info')->warning('User  created a transaction', ['user' => Auth::user()->id .' '.Auth::user()->name, 'transaction'=>$request->validated()]);
+        return redirect()->route('transactions.index')->with('success',__('main.qualification_created_with_success'));
     }
 
     /**
@@ -62,6 +64,7 @@ class TransactionsController extends Controller
         $students = Student::with('qualification')->get();
         $departments = Department::all();
         $semesters = Semester::all();
+        Log::channel('info')->info('User is trying to show a transaction', ['user' => Auth::user()->id .': '.Auth::user()->name]);
         return view('transactions.show',compact('students','departments','semesters'));
     }
 
@@ -77,7 +80,7 @@ class TransactionsController extends Controller
         $departments = Department::all();
         $semesters = Semester::all();
         $students = Student::all();
-
+        Log::channel('info')->info('User trying to edit a transaction', ['user' => Auth::user()->id .': '.Auth::user()->name, 'transaction'=> $id]);
         return view('transactions.edit',compact('departments','transaction','semesters','students'));
     }
 
@@ -90,10 +93,10 @@ class TransactionsController extends Controller
      */
     public function update(TransactionsRequest $request, $id)
     {
-
         $transaction= Transaction::find($id);
         $transaction->update(['user_id' => auth()->user()->id]+$request->validated());
-        return redirect()->route('transactions.index')->with('success','Öğrenci '. $transaction->transaction_type.' başarıyla güncenlendi');
+        Log::channel('info')->info('User updated a transaction', ['user' => Auth::user()->id .': '.Auth::user()->name, 'transaction'=> $transaction]);
+        return redirect()->route('transactions.index')->with('success', __('main.student'). $transaction->transaction_type.' '. __('main.with_success_updated'));
     }
 
     /**
@@ -105,11 +108,12 @@ class TransactionsController extends Controller
     public function destroy($id)
     {
 
-        $qualification = Qualification::find($id);
+        $qualification = Transaction::find($id);
 
         $qualification->delete();
+        Log::channel('info')->info('User deleted a transaction', ['user' => Auth::user()->id .': '.Auth::user()->name, 'transaction'=> $id]);
         return redirect()->route('transactions.index')
-            ->with('success','Öğrenci MY başarıyla silindi');
+            ->with('success',__('main.student_with_success_deleted'));
     }
     public function ajaxQualification($id){
         $qualificaiton = Qualification::where('student_id',$id)->get();

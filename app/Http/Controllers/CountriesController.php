@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Countries;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CountriesController extends Controller
 {
@@ -15,6 +16,7 @@ class CountriesController extends Controller
     public function index()
     {
         $countries = Countries::all();
+        Log::channel('info')->info('User is accessing all the Countries', ['user' => auth()->user()->id,'controller' => 'CountriesController@index']);
         return view('countries.index',compact('countries'));
     }
 
@@ -25,6 +27,7 @@ class CountriesController extends Controller
      */
     public function create()
     {
+        Log::channel('info')->info('User is  trying   create  Countries', ['user' => auth()->user()->id,'controller' => 'CountriesController@create']);
         return view('countries.create');
     }
 
@@ -39,8 +42,9 @@ class CountriesController extends Controller
         $validated = $request->validate([
            'name' => 'required|string'
         ]);
-        Countries::create($validated);
-        return redirect()->route('countries.index')->with('success','Ülke başarıyla eklendi');
+       $country = Countries::create($validated);
+        Log::channel('info')->info('User is  trying   create  Countries', ['user' => auth()->user()->id,'controller' => 'CountriesController@store','country' => $country]);
+        return redirect()->route('countries.index')->with('success',__('main.country_created_with_success'));
     }
 
     /**
@@ -52,6 +56,7 @@ class CountriesController extends Controller
     public function edit($id)
     {
         $country = Countries::find($id);
+        Log::channel('info')->info('User is  trying   edit  Countries', ['user' => auth()->user()->id,'controller' => 'CountriesController@edit','country' => $country]);
         return view('countries.edit',compact('country'));
     }
 
@@ -69,7 +74,8 @@ class CountriesController extends Controller
         ]);
         $country = Countries::find($id);
         $country->update($validated);
-        return redirect()->route('countries.index')->with('success','Ülke başarıyla güncellendi');
+        Log::channel('info')->info('User is  trying   update  Countries', ['user' => auth()->user()->id,'controller' => 'CountriesController@update','country' => $country]);
+        return redirect()->route('countries.index')->with('success',__('main.country_updated_with_success'));
     }
 
     /**
@@ -82,7 +88,8 @@ class CountriesController extends Controller
     {
         $country = Countries::find($id);
         $country->delete();
-        return redirect()->route('countries.index')->with('success','Ülke başarıyla silindi');
+        Log::channel('info')->info('User is  trying   delete  Countries', ['user' => auth()->user()->id,'controller' => 'CountriesController@destroy','country' => $id]);
+        return redirect()->route('countries.index')->with('success',__('main.country_deleted_with_success'));
 
     }
 }

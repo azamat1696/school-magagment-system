@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class DepartmentsController extends Controller
 {
@@ -15,6 +16,7 @@ class DepartmentsController extends Controller
     public function index()
     {
         $departments = Department::all();
+        Log::channel('info')->info('User is accessing all the departments', ['user' => auth()->user()->id,'controller' => 'Departments@index']);
         return view('departments.index',compact('departments'));
     }
 
@@ -25,6 +27,7 @@ class DepartmentsController extends Controller
      */
     public function create()
     {
+        Log::channel('info')->info('User is trying to create a department', ['user' => auth()->user()->id,'controller' => 'Departments@create']);
         return view('departments.create');
     }
 
@@ -36,6 +39,7 @@ class DepartmentsController extends Controller
      */
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'name' => 'required|unique:departments,name',
             'description' => 'sometimes',
@@ -43,8 +47,9 @@ class DepartmentsController extends Controller
             'status' => 'required',
             'first_letter' => 'required',
         ]);
-        Department::create($validated);
-        return redirect()->route('departments.index')->with('success','Sınıf başarıyla eklendi');
+       $department = Department::create($validated);
+        Log::channel('info')->info('User created a department', ['user' => auth()->user()->id,'controller' => 'Departments@store','data' => $department]);
+        return redirect()->route('departments.index')->with('success',__('main.department_created_with_success'));
     }
 
     /**
@@ -56,6 +61,7 @@ class DepartmentsController extends Controller
     public function edit($id)
     {
         $department = Department::find($id);
+        Log::channel('info')->info('User is trying to edit a department', ['user' => auth()->user()->id,'controller' => 'Departments@edit','data' => $department]);
         return view('departments.edit',compact('department'));
     }
 
@@ -77,6 +83,7 @@ class DepartmentsController extends Controller
         ]);
         $department = Department::find($id);
         $department->update($validated);
+        Log::channel('info')->info('User updated a department', ['user' => auth()->user()->id,'controller' => 'Departments@update','data' => $department]);
         return redirect()->route('departments.index')->with('success','Sınıf Gurubu başarıyla güncellendi');
 
     }
@@ -91,6 +98,7 @@ class DepartmentsController extends Controller
     {
         $department = Department::find($id);
         $department->delete();
-        return redirect()->route('departments.index')->with('success','Sınıf Gurubu başarıyla silindi');
+        Log::channel('info')->info('User deleted a department', ['user' => auth()->user()->id,'controller' => 'Departments@destroy','data' => $id]);
+        return redirect()->route('departments.index')->with('success',__('main.department_deleted_with_success'));
     }
 }

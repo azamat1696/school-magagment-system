@@ -10,6 +10,7 @@ use App\Models\User;
 use Doctrine\DBAL\Driver\Exception;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -73,11 +74,13 @@ class RegisterController extends Controller
 
     public function index(){
         $users = User::all();
+        Log::channel('info')->info('User is accessing all the Users', ['user' => auth()->user()->id,'controller' => 'RegisterController@index']);
 
         return view('auth.user.index',compact('users'));
     }
     public function edit($id){
         $user = User::find($id);
+        Log::channel('info')->info('User is trying to edit Users', ['user' => auth()->user()->id,'controller' => 'RegisterController@edit','data' => $user]);
         return view('auth.user.edit',compact('user'));
     }
 
@@ -104,6 +107,7 @@ class RegisterController extends Controller
         }
           $user = User::create(['password' => Hash::make($data['password']),'ProfilResim' => $fileName]+ $data);
           $user->assignRole($data['KullaniciTipi']);
+            Log::channel('info')->info('User is trying to create Users', ['user' => auth()->user()->id,'controller' => 'RegisterController@create','data' => $user]);
           return $user;
     }
 
@@ -131,8 +135,8 @@ class RegisterController extends Controller
             $user->update(['ProfilResim' => $fileName] + $request->except(['password']));
             $user->syncRoles($request->KullaniciTipi);
         }
-
-        return redirect()->route('user.index')->with('success','Kullanıcı başarıyla güncellendi');
+        Log::channel('info')->info('User updated Users', ['user' => auth()->user()->id,'controller' => 'RegisterController@update','data' => $user]);
+        return redirect()->route('user.index')->with('success',__('main.user_updated_with_success'));
     }
 
 
@@ -140,7 +144,8 @@ class RegisterController extends Controller
 
         $user = User::find($id);
         $user->delete();
+        Log::channel('info')->info('User deleted Users', ['user' => auth()->user()->id,'controller' => 'RegisterController@destroy','data' => $user]);
         return redirect()->route('user.index')
-            ->with('success','Kullanıcı başarıyla silindi');
+            ->with('success',__('main.user_deleted_with_success'));
     }
 }
