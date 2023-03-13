@@ -25,7 +25,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('panel/dist/css/adminlte.min.css')}}">
     @yield('css')
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
