@@ -49,33 +49,26 @@
                             </div>
 
                         </div>
-{{--                        <div class="col-md-3">--}}
-{{--                            <!-- Date dd/mm/yyyy -->--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label>Status</label>--}}
+                        <div class="col-md-3">
 
-{{--                                <div class="input-group">--}}
-{{--                                    <p class="toggleStatus">--}}
-{{--                                        <label class="toggleSwitch nolabel" onclick="">--}}
-{{--                                            <input type="checkbox" checked="checked" />--}}
-{{--                                            <span>--}}
-{{--                                              <span>Açık</span>--}}
-{{--                                              <span>Kapalı</span>--}}
-{{--                                              </span>--}}
-{{--                                            <a></a>--}}
-{{--                                        </label>--}}
-{{--                                     </p>--}}
-{{-- --}}
-{{--                                    @error('BitisTarihi')--}}
-{{--                                    <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                    @enderror--}}
-{{--                                </div>--}}
+                            <div class="form-group">
+                                <label>{{__('main.status')}}</label>
+                                <div class="input-group">
+                                    <select  class="form-control @error('status') is-invalid @enderror"  name="status" required>
+                                        <option value="1">{{__('main.opened')}}</option>
+                                        <option value="0">{{__('main.closed')}}</option>
+                                    </select>
+                                    @error('status')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
 
-{{--                            </div>--}}
+                            </div>
 
-{{--                        </div>--}}
+                        </div>
+
                     </div>
                     <div class="row float-right">
                         <div class="col-md-4">

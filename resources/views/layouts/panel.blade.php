@@ -36,15 +36,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="font-size: large"></i></a>
             </li>
-        </ul>
+            @role('Super-Admin')
+            <li class="nav-item">
+                <a class="nav-link"  href="/log-viewer" role="button">{{__('main.log_view')}}</a>
+            </li>
+            @endrole
 
+        </ul>
 
         <ul class="navbar-nav ml-auto">
 {{--  Select language      --}}
             <li class="nav-item">
                 <select class="form-control changeLang">
-                    <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
                     <option value="tr" {{ session()->get('locale') == 'tr' ? 'selected' : '' }}>TR</option>
+                    <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
                     <option value="ru" {{ session()->get('locale') == 'ru' ? 'selected' : '' }}>RU</option>
                 </select>
             </li>
@@ -202,6 +207,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
 
                     </li>
+                    <li class="nav-item">
+                        <a  href="{{route('sections.index')}}"  class="nav-link {{request()->routeIs('sections*') ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-users-cog"></i>
+                            <p>
+                                {{__('main.classes')}}
+                            </p>
+                        </a>
+
+                    </li>
+
                     <li class="nav-item">
                         <a  href="{{route('sections.index')}}"  class="nav-link {{request()->routeIs('sections*') ? 'active' : ''}}">
                             <i class="nav-icon fas fa-users-cog"></i>

@@ -39,8 +39,7 @@
                             <td>{{date('Y-m-d',strtotime($year->BaslamaTarihi))}}</td>
                             <td>{{date('Y-m-d',strtotime($year->BitisTarihi ))}}</td>
                             <td>
-{{--                                                            <input type="checkbox" name="Statu" data-id="{{$year->id}}"   class="grid-switch-released">--}}
-                                @if($year->Statu === 1)
+                                @if($year->status == 1)
                                     <span class="badge badge-pill badge-success p-2">{{__('main.opened')}}</span>
                                 @else
                                     <span class="badge badge-pill badge-danger p-2">{{__('main.closed')}}</span>

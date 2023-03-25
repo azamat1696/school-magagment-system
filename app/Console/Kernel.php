@@ -4,9 +4,13 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Console\Commands\MigrateInOrderClass;
 
 class Kernel extends ConsoleKernel
 {
+    protected $commands = [
+        MigrateInOrderClass::class,
+    ];
     /**
      * Define the application's command schedule.
      *
@@ -17,6 +21,7 @@ class Kernel extends ConsoleKernel
     {
 //         $schedule->command('inspire')->hourly();
 //         $schedule->command('inspire')->weekly();
+          // $schedule->command('inspire')->monthly();
     }
 
     /**

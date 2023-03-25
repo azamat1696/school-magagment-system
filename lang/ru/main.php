@@ -175,4 +175,6 @@ return [
     'login' => 'Войти',
     'remember_me' => 'Запомнить меня',
     'forgot_your_password' => 'Забыли пароль?',
+     'log_view' => 'Просмотр журнала',
+    'accounting' => 'Учет',
 ];

@@ -13,19 +13,20 @@ class CreateAttendancesTable extends Migration
      */
     public function up()
     {
-        Schema::disableForeignKeyConstraints();
+        //Schema::disableForeignKeyConstraints();
 
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('section_id');
-            $table->foreign('section_id')->references('id')->on('section');
-            $table->bigInteger('student_id');
             $table->boolean('Status');
             $table->date('assigned_date');
-            $table->bigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('user');
-            $table->bigInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('course');
+            $table->unsignedBigInteger('section_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('course_id');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('section_id')->references('id')->on('sections')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null')->onUpdate('cascade');
             $table->timestamps();
         });
 

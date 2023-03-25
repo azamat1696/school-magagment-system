@@ -43,10 +43,10 @@ class CreateQualificationsTable extends Migration
             $table->string('notes')->nullable(); //
             $table->boolean('status')->default(1);
             $table->unsignedBigInteger('user_id');
-            $table->foreign('student_id')->references('id')->on('students');
-            $table->foreign('departmnent_id')->references('id')->on('departments');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('ic_denetim_user_id')->references('id')->on('users');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('departmnent_id')->references('id')->on('departments')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('ic_denetim_user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
             $table->timestamps();
         });
     }

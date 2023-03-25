@@ -29,7 +29,7 @@ return new class extends Migration
             $table->longText('Adres')->nullable();
             $table->string('KullaniciTipi')->nullable();
             $table->unsignedBigInteger('country_id');
-            $table->foreign('country_id')->references('id')->on('countries');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null')->onUpdate('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

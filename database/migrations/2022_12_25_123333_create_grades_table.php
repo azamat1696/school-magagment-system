@@ -17,14 +17,15 @@ class CreateGradesTable extends Migration
 
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('student');
-            $table->bigInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('course');
-            $table->bigInteger('semester_id');
-            $table->bigInteger('grade');
-            $table->bigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('semester_id');
+            $table->unsignedBigInteger('grade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('course_id')->references('id')->on('course')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('student_id')->references('id')->on('student')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('semester_id')->references('id')->on('semester')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('set null')->onUpdate('cascade');
             $table->timestamps();
         });
 

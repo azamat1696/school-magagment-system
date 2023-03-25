@@ -19,8 +19,8 @@ class CreateSemestersTable extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('academic_years_id');
-            $table->foreign('academic_years_id')->references('id')->on('academic_years');
             $table->boolean('status');
+            $table->foreign('academic_years_id')->references('id')->on('academic_years')->onDelete('set null')->onUpdate('cascade');;
             $table->timestamps();
         });
 

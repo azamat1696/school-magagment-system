@@ -225,7 +225,7 @@
                                     <select  class="form-control @error('currency_type') is-invalid @enderror"   name="currency_type" required>
                                             <option value="TL">TL</option>
                                             <option value="EUROS">EURO</option>
-                                            <option value="DOLLARS">TL</option>
+                                            <option value="DOLLAR">TL</option>
                                     </select>
                                     @error('currency_type')
                                     <span class="invalid-feedback" role="alert">

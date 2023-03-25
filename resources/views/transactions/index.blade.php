@@ -8,7 +8,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('transactions.index')}}"> {{  __('main.student').' '.__('main.profession_qualification')}} /</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('transactions.index')}}"> {{  __('main.student').' '.__('main.accounting')}} /</a></li>
                      </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -22,7 +22,7 @@
         <!--  card -->
         <div class="card">
             <div class="card-header">
-                <h1 class="card-title"> <i class="fa fa-people-carry"></i> {{__('main.profession_qualification')}}</h1>
+                <h1 class="card-title"> <i class="fa fa-people-carry"></i> {{__('main.accounting')}}</h1>
                 @role('Super-Admin')
                 <a href="{{route('transactions.show')}}" class="btn btn-primary float-right"> <i class="fa fa-plus"> {{__('main.new')}}</i></a>
                 @endrole
@@ -68,12 +68,21 @@
                             <td>{{$transaction->student->name.' '.$transaction->student->surname}}</td>
                             <td>{{$transaction->qualification->student_no}}</td>
                             <td>{{$transaction->transaction_no}}</td>
-                            <td>{{$transaction->amount_payed}}</td>
+                            <td>{{number_format($transaction->amount_payed)}}</td>
                             <td>{{$transaction->currency_type}}</td>
                             <td>{{$transaction->description}}</td>
                             <td>{{$transaction->islem_tarih == null ? '' : date('d-m-Y',strtotime($transaction->islem_tarih)) }}</td>
                             <td>{{$transaction->vade_tarih == null ? '' : date('d-m-Y',strtotime($transaction->vade_tarih)) }}</td>
-                            <td>{{$transaction->transaction_type}}</td>
+                            <td>@if($transaction->transaction_type == 'invoice')
+                                   {{__('main.invoice')}}
+                                @elseif($transaction->transaction_type == 'deduction')
+                                    {{__('main.deduction')}}
+                                @elseif($transaction->transaction_type == 'receipt')
+                                    {{__('main.receipt')}}
+                                @else
+                                    {{__('main.extra_fee')}}
+                               @endif
+                            </td>
                             <td>{{$transaction->department->name}}</td>
                             <td>{{$transaction->semester->name}}</td>
                             <td>{{$transaction->user->name}}</td>

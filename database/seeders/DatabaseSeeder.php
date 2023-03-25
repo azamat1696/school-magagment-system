@@ -20,11 +20,23 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-
-//         \App\Models\User::factory()->create([
+//        Role::create([
+//            'name' => 'Super-Admin',
+//        ]);
+//        Role::create([
+//            'name' => 'Operator'
+//        ]);
+//        Role::create([
+//            'name' => 'Internal-Audit'
+//        ]);
+//        Role::create([
+//            'name' => 'Teacher'
+//        ]);
+//        $user = \App\Models\User::factory()->create([
 //             'name' => 'Test User',
 //             'email' => 'test@example.com',
 //             'password' =>  Hash::make('12121212'),
+//             'country_id' => 1,
 //         ]);
 
 //

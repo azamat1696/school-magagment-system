@@ -203,4 +203,7 @@ return [
     'user_created_with_success' => 'Kullanıcı başarıyla oluşturuldu',
     'user_updated_with_success' => 'Kullanıcı başarıyla güncellendi',
     'user_deleted_with_success' => 'Kullanıcı başarıyla silindi',
+    'log_view' => 'Log Görüntüle',
+    'accounting' => 'Muhasabe',
+
  ];

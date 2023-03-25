@@ -21,8 +21,6 @@ class CreateStudentsTable extends Migration
             $table->string('identity_no'); //
             $table->string('passport_no'); //
             $table->enum('gender', ['Male','Female','others'])->default('others'); //
-            $table->unsignedBigInteger('country_id'); //
-            $table->foreign('country_id')->references('id')->on('countries'); //
             $table->string('blood_group'); //
             $table->date('birth_date'); //
             $table->string('place_of_birth'); //
@@ -34,10 +32,12 @@ class CreateStudentsTable extends Migration
             $table->string('phone_no_2')->nullable(); //
             $table->string('address')->nullable(); //
             $table->string('notes')->nullable();
+            $table->unsignedBigInteger('country_id'); //
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->string('student_photo')->nullable();
             $table->boolean('status')->default(1);
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null')->onUpdate('cascade'); //
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
             $table->timestamps();
         });
 

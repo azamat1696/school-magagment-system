@@ -11,8 +11,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
-    'home_page' => 'Home Page',
+     'home_page' => 'Home Page',
     'users' => 'Users',
     'academic_year' => 'Academic Year',
     'semester' => 'Semester',
@@ -176,5 +175,7 @@ return [
     'login' => 'Login',
     'remember_me' => 'Remember Me',
     'forgot_your_password' => 'Forgot Your Password?',
+    'log_view' => 'Log View',
+    'accounting' => 'Accounting',
 
 ];

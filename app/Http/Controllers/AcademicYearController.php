@@ -41,8 +41,10 @@ class AcademicYearController extends Controller
     {
         $validated = $request->validate([
             'BaslamaTarihi' => 'required|date',
-            'BitisTarihi' => 'required||date'
+            'BitisTarihi' => 'required||date',
+            'status' => 'required'
         ]);
+
         $academic = AcademicYear::create($validated);
         Log::channel('info')->info('User    created  Academic Year', ['user' => auth()->user()->id,'controller' => 'AcademicYearController@store','academic' => $academic]);
         return redirect()->route('academic-year.index')->with('success',__('main.academic_year_created_with_success'));
@@ -84,7 +86,8 @@ class AcademicYearController extends Controller
     {
         $validated = $request->validate([
             'BaslamaTarihi' => 'required|date',
-            'BitisTarihi' => 'required||date'
+            'BitisTarihi' => 'required||date',
+            'status' => 'required'
         ]);
         $academicYear = AcademicYear::find($id);
         $academicYear->update($validated);

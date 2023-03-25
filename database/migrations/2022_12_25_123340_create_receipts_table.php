@@ -18,10 +18,10 @@ class CreateReceiptsTable extends Migration
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
             $table->string('receipt_no');
-            $table->bigInteger('invoice_id');
+            $table->unsignedBigInteger('invoice_id');
             $table->foreign('invoice_id')->references('id')->on('invoice');
-            $table->bigInteger('transaction_id');
-            $table->foreign('transaction_id')->references('id')->on('transaction');
+            $table->unsignedBigInteger('transaction_id');
+            $table->foreign('transaction_id')->references('id')->on('transaction')->onDelete('set null')->onUpdate('cascade');
             $table->timestamps();
         });
 

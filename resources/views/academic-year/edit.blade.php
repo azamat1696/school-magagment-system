@@ -51,6 +51,26 @@
                             </div>
 
                         </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label>{{__('main.status')}}</label>
+                                <div class="input-group">
+                                    <select  class="form-control @error('status') is-invalid @enderror"  name="status" required>
+                                        <option value="1" {{$academicYear->status == 1 ? 'selected' : ''}}>{{__('main.opened')}}</option>
+                                        <option value="0" {{$academicYear->status == 0 ? 'selected' : ''}}>{{__('main.closed')}}</option>
+                                    </select>
+                                    @error('status')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                        </div>
                     </div>
                     <div class="row float-right">
                         <div class="col-md-4">

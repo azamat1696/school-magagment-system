@@ -24,7 +24,7 @@ class CreateStudentRecordsTable extends Migration
             $table->foreign('student_id')->references('id')->on('students');
             $table->unsignedBigInteger('user_id');
             $table->boolean('status')->default(1);
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
             $table->timestamps();
         });
 

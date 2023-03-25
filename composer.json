@@ -12,7 +12,9 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.1",
         "opcodesio/log-viewer": "^2.3",
-        "spatie/laravel-permission": "^5.7"
+        "spatie/laravel-permission": "^5.7",
+        "maatwebsite/excel": "^3.1",
+        "phpoffice/phpspreadsheet": "^1.22"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
