@@ -18,9 +18,9 @@ class CreateReceiptsTable extends Migration
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
             $table->string('receipt_no');
-            $table->unsignedBigInteger('invoice_id');
-            $table->foreign('invoice_id')->references('id')->on('invoice');
-            $table->unsignedBigInteger('transaction_id');
+            $table->unsignedBigInteger('invoice_id')->nullable();
+            $table->foreign('invoice_id')->references('id')->on('invoice')->onDelete('set null')->onUpdate('cascade');
+            $table->unsignedBigInteger('transaction_id')->nullable();
             $table->foreign('transaction_id')->references('id')->on('transaction')->onDelete('set null')->onUpdate('cascade');
             $table->timestamps();
         });

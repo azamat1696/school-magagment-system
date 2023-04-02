@@ -20,7 +20,7 @@ class CreateCoursesTable extends Migration
             $table->string('course_no');
             $table->string('description');
             $table->boolean('status')->default(true);
-            $table->unsignedBigInteger('department_id');
+            $table->unsignedBigInteger('department_id')->nullable();
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('set null')->onUpdate('cascade');
             $table->timestamps();
         });

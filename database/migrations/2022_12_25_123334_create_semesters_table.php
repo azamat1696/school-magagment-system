@@ -18,7 +18,7 @@ class CreateSemestersTable extends Migration
         Schema::create('semesters', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('academic_years_id');
+            $table->unsignedBigInteger('academic_years_id')->nullable();
             $table->boolean('status');
             $table->foreign('academic_years_id')->references('id')->on('academic_years')->onDelete('set null')->onUpdate('cascade');;
             $table->timestamps();

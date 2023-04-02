@@ -26,8 +26,8 @@ class CreateSectionsTable extends Migration
             $table->foreign('ic_denetim_user_id')->references('id')->on('users');
             $table->date('ders_imza_end_date')->nullable();
             $table->boolean('status')->default(1);
-            $table->unsignedBigInteger('user_id')->comment('en son işlem yapan kişi');
-            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('user_id')->nullable()->comment('en son işlem yapan kişi');
+            $table->unsignedBigInteger('course_id')->nullable();
             $table->unsignedBigInteger('instructor_user_id')->nullable();
             $table->unsignedBigInteger('ic_denetim_user_id')->nullable();
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null')->onUpdate('cascade');

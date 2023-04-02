@@ -17,11 +17,11 @@ class CreateGradesTable extends Migration
 
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('course_id');
-            $table->unsignedBigInteger('semester_id');
-            $table->unsignedBigInteger('grade');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('student_id')->nullable();
+            $table->unsignedBigInteger('course_id')->nullable();
+            $table->unsignedBigInteger('semester_id')->nullable();
+            $table->unsignedBigInteger('grade')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('course_id')->references('id')->on('course')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('student_id')->references('id')->on('student')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('semester_id')->references('id')->on('semester')->onDelete('set null')->onUpdate('cascade');

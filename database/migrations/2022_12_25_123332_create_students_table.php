@@ -32,8 +32,8 @@ class CreateStudentsTable extends Migration
             $table->string('phone_no_2')->nullable(); //
             $table->string('address')->nullable(); //
             $table->string('notes')->nullable();
-            $table->unsignedBigInteger('country_id'); //
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('country_id')->nullable(); //
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('student_photo')->nullable();
             $table->boolean('status')->default(1);
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null')->onUpdate('cascade'); //

@@ -16,13 +16,13 @@ class CreateStudentRecordsTable extends Migration
 
         Schema::create('student_records', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('academic_year_id');
+            $table->unsignedBigInteger('academic_year_id')->nullable();
             $table->foreign('academic_year_id')->references('id')->on('academic_years');
-            $table->unsignedBigInteger('semester_id');
+            $table->unsignedBigInteger('semester_id')->nullable();
             $table->foreign('semester_id')->references('id')->on('semesters');
-            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('student_id')->nullable();
             $table->foreign('student_id')->references('id')->on('students');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->boolean('status')->default(1);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
             $table->timestamps();

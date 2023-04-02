@@ -15,11 +15,11 @@ class CreateQualificationsTable extends Migration
     {
         Schema::create('qualifications', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id'); //
+            $table->unsignedBigInteger('student_id')->nullable(); //
             $table->string('student_no')->unique(); //
             $table->enum('student_status',['Aktif','Pasif','OnKayitli','KaydiSilinmis','KayitDondurma'])->default('OnKayitli'); //
             $table->date('qualification_start_date')->nullable(); //
-            $table->unsignedBigInteger('departmnent_id'); //
+            $table->unsignedBigInteger('departmnent_id')->nullable(); //
             $table->dateTime('ic_denetim_tarih')->nullable();
             $table->unsignedBigInteger('ic_denetim_user_id')->nullable();
             $table->date('depart_imza_end_date')->nullable(); //
@@ -42,7 +42,7 @@ class CreateQualificationsTable extends Migration
             $table->bigInteger('diploma_not')->nullable(); //
             $table->string('notes')->nullable(); //
             $table->boolean('status')->default(1);
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable()->comment('en son işlem yapan');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('departmnent_id')->references('id')->on('departments')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');

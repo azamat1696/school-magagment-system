@@ -19,10 +19,10 @@ class CreateAttendancesTable extends Migration
             $table->id();
             $table->boolean('Status');
             $table->date('assigned_date');
-            $table->unsignedBigInteger('section_id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('section_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('student_id')->nullable();
+            $table->unsignedBigInteger('course_id')->nullable();
             $table->foreign('student_id')->references('id')->on('students')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('set null')->onUpdate('cascade');

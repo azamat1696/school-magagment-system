@@ -17,11 +17,11 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->string('transaction_no'); //
             $table->string('description')->nullable(); //
-            $table->unsignedBigInteger('student_id'); //
-            $table->unsignedBigInteger('qualification_id');
-            $table->unsignedBigInteger('user_id')->comment('en son işlem yapan');
-            $table->unsignedBigInteger('department_id');
-            $table->unsignedBigInteger('semester_id');
+            $table->unsignedBigInteger('student_id')->nullable(); //
+            $table->unsignedBigInteger('qualification_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable()->comment('en son işlem yapan');
+            $table->unsignedBigInteger('department_id')->nullable();
+            $table->unsignedBigInteger('semester_id')->nullable();
             $table->string('currency_type');
             $table->date('islem_tarih')->nullable();
             $table->date('vade_tarih')->nullable();
